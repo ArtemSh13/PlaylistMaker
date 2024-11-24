@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">PlaylistMaker</string>
+    <string name="main_screen_title">Playlist maker</string>
+    <string name="main_screen_button_search">Поиск</string>
+    <string name="main_screen_button_library">Медиатека</string>
+    <string name="main_screen_button_settings">Настройки</string>
 </resources>
