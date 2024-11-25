@@ -5,16 +5,21 @@
     android:layout_height="match_parent"
     android:background="@color/main_screen_background_color"
     android:orientation="vertical">
-    <TextView
+    <Toolbar
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="7"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="14dp"
-        android:text="@string/main_screen_title"
-        android:textSize="22sp"
-        android:textColor="@color/main_screen_title_color"
-        />
+        android:layout_marginStart="4dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="14dp"
+            android:text="@string/main_screen_title"
+            android:textSize="22sp"
+            android:textColor="@color/main_screen_title_color"
+            />
+    </Toolbar>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
