@@ -5,11 +5,12 @@
     android:layout_height="match_parent"
     android:background="@color/main_screen_background_color"
     android:orientation="vertical">
-    <Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="7"
-        android:layout_marginStart="4dp">
+        android:layout_marginStart="4dp"
+        >
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -19,7 +20,7 @@
             android:textSize="22sp"
             android:textColor="@color/main_screen_title_color"
             />
-    </Toolbar>
+    </androidx.appcompat.widget.Toolbar>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
