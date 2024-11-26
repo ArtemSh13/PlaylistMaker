@@ -5,54 +5,55 @@
     android:layout_height="match_parent"
     android:background="@color/main_screen_background_color"
     android:orientation="vertical">
+
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="7"
         android:layout_marginStart="4dp"
-        >
+        android:layout_weight="7">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="12dp"
             android:layout_marginTop="14dp"
             android:text="@string/main_screen_title"
-            android:textSize="22sp"
             android:textColor="@color/main_screen_title_color"
-            />
+            android:textSize="22sp" />
     </androidx.appcompat.widget.Toolbar>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
         android:layout_weight="93"
-        android:orientation="vertical"
-        android:layout_marginBottom="20dp">
+        android:orientation="vertical">
+
         <Button
             style="@style/main_screen_button"
             android:text="@string/main_screen_button_search"
+            app:cornerRadius="16dp"
             app:icon="@drawable/ic_light_mode_inactive_search"
             app:iconGravity="textStart"
             app:iconPadding="8dp"
-            app:iconTint="@color/main_screen_button_text_color"
-            app:cornerRadius="16dp"
-            />
+            app:iconTint="@color/main_screen_button_text_color" />
+
         <Button
             style="@style/main_screen_button"
             android:text="@string/main_screen_button_library"
+            app:cornerRadius="16dp"
             app:icon="@drawable/ic_light_mode_inactive_library"
             app:iconGravity="textStart"
             app:iconPadding="8dp"
-            app:iconTint="@color/main_screen_button_text_color"
-            app:cornerRadius="16dp"
-            />
+            app:iconTint="@color/main_screen_button_text_color" />
+
         <Button
             style="@style/main_screen_button"
             android:text="@string/main_screen_button_settings"
+            app:cornerRadius="16dp"
             app:icon="@drawable/ic_light_mode_inactive_settings"
             app:iconGravity="textStart"
             app:iconPadding="8dp"
-            app:iconTint="@color/main_screen_button_text_color"
-            app:cornerRadius="16dp"
-            />
+            app:iconTint="@color/main_screen_button_text_color" />
     </LinearLayout>
 </LinearLayout>
