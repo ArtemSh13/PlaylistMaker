@@ -4,4 +4,9 @@
     <string name="main_screen_button_search">Поиск</string>
     <string name="main_screen_button_library">Медиатека</string>
     <string name="main_screen_button_settings">Настройки</string>
+    <string name="settings_screen_title">Настройки</string>
+    <string name="settings_screen_item_dark_theme">Тёмная тема</string>
+    <string name="settings_screen_item_share">Поделиться приложением</string>
+    <string name="settings_screen_item_support">Написать в поддержку</string>
+    <string name="settings_screen_item_user_agreement">Пользовательское соглашение</string>
 </resources>
