@@ -7,6 +7,7 @@
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/settings_toolbar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="4dp"
@@ -40,6 +41,7 @@
             android:textColor="#000000" />
 
         <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/dark_theme_switch"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -48,16 +50,19 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/share"
         style="@style/settings_screen_text_item"
         android:drawableEnd="@drawable/ic_light_mode_share"
         android:text="@string/settings_screen_item_share" />
 
     <TextView
+        android:id="@+id/support"
         style="@style/settings_screen_text_item"
         android:drawableEnd="@drawable/ic_light_mode_support"
         android:text="@string/settings_screen_item_support" />
 
     <TextView
+        android:id="@+id/user_agreement"
         style="@style/settings_screen_text_item"
         android:drawableEnd="@drawable/ic_light_mode_arrow_forward"
         android:text="@string/settings_screen_item_user_agreement" />

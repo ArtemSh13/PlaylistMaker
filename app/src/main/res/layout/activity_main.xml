@@ -7,6 +7,7 @@
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/main_toolbar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="4dp"
@@ -30,6 +31,7 @@
         android:orientation="vertical">
 
         <Button
+            android:id="@+id/search_button"
             style="@style/main_screen_button"
             android:text="@string/main_screen_button_search"
             app:cornerRadius="16dp"
@@ -39,6 +41,7 @@
             app:iconTint="@color/main_screen_button_text_color" />
 
         <Button
+            android:id="@+id/library_button"
             style="@style/main_screen_button"
             android:text="@string/main_screen_button_library"
             app:cornerRadius="16dp"
@@ -48,6 +51,7 @@
             app:iconTint="@color/main_screen_button_text_color" />
 
         <Button
+            android:id="@+id/settings_button"
             style="@style/main_screen_button"
             android:text="@string/main_screen_button_settings"
             app:cornerRadius="16dp"
