@@ -25,23 +25,23 @@
     </androidx.appcompat.widget.Toolbar>
 
     <com.google.android.material.switchmaterial.SwitchMaterial
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="61"
+        android:layout_width="@dimen/settings_screen_item_layout_width"
+        android:layout_height="@dimen/settings_screen_item_layout_height"
+        android:layout_weight="@dimen/settings_screen_item_layout_weight"
         android:text="@string/settings_screen_item_dark_theme"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginStart="@dimen/settings_screen_item_layout_marginStart"
+        android:layout_marginEnd="@dimen/settings_screen_item_layout_marginEnd"
         android:textColor="@color/settings_screen_item_text_color"
         app:thumbTint="@color/settings_screen_item_switch_thumbTint_color"
         app:trackTint="@color/settings_screen_item_switch_trackTint_color"  />
 
     <TextView
         android:id="@+id/share"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="12dp"
-        android:layout_weight="61"
+        android:layout_width="@dimen/settings_screen_item_layout_width"
+        android:layout_height="@dimen/settings_screen_item_layout_height"
+        android:layout_marginStart="@dimen/settings_screen_item_layout_marginStart"
+        android:layout_marginEnd="@dimen/settings_screen_item_layout_marginEnd"
+        android:layout_weight="@dimen/settings_screen_item_layout_weight"
         android:gravity="center_vertical"
         android:textColor="@color/settings_screen_item_text_color"
         android:drawableEnd="@drawable/ic_light_mode_share"
@@ -49,23 +49,22 @@
 
     <TextView
         android:id="@+id/support"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="12dp"
-        android:layout_weight="61"
+        android:layout_width="@dimen/settings_screen_item_layout_width"
+        android:layout_height="@dimen/settings_screen_item_layout_height"
+        android:layout_marginStart="@dimen/settings_screen_item_layout_marginStart"
+        android:layout_marginEnd="@dimen/settings_screen_item_layout_marginEnd"
+        android:layout_weight="@dimen/settings_screen_item_layout_weight"
         android:gravity="center_vertical"
         android:textColor="@color/settings_screen_item_text_color"
         android:drawableEnd="@drawable/ic_light_mode_support"
         android:text="@string/settings_screen_item_support" />
 
     <TextView
-        android:id="@+id/user_agreement"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="12dp"
-        android:layout_weight="61"
+        android:layout_width="@dimen/settings_screen_item_layout_width"
+        android:layout_height="@dimen/settings_screen_item_layout_height"
+        android:layout_marginStart="@dimen/settings_screen_item_layout_marginStart"
+        android:layout_marginEnd="@dimen/settings_screen_item_layout_marginEnd"
+        android:layout_weight="@dimen/settings_screen_item_layout_weight"
         android:gravity="center_vertical"
         android:textColor="@color/settings_screen_item_text_color"
         android:drawableEnd="@drawable/ic_light_mode_arrow_forward"

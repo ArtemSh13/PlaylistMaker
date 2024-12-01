@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Main Screen-->
+    <dimen name="main_screen_button_layout_width">match_parent</dimen>
+    <dimen name="main_screen_button_layout_height">0dp</dimen>
+    <dimen name="main_screen_button_layout_weight">1</dimen>
+    <dimen name="main_screen_button_layout_marginHorizontal">16dp</dimen>
+    <dimen name="main_screen_button_layout_marginVertical">8dp</dimen>
+    <dimen name="main_screen_button_layout_layout_gravity">center_horizontal</dimen>
+    <dimen name="main_screen_button_cornerRadius">16dp</dimen>
+    <dimen name="main_screen_button_iconPadding">8dp</dimen>
+    <!--Settings Screen-->
+    <dimen name="settings_screen_item_layout_width">match_parent</dimen>
+    <dimen name="settings_screen_item_layout_height">0dp</dimen>
+    <dimen name="settings_screen_item_layout_marginStart">16dp</dimen>
+    <dimen name="settings_screen_item_layout_marginEnd">12dp</dimen>
+    <dimen name="settings_screen_item_layout_weight">61</dimen>
+</resources>
