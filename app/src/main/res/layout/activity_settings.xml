@@ -9,10 +9,9 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/settings_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="56dp"
         android:layout_marginStart="4dp"
-        android:layout_marginBottom="24dp"
-        android:layout_weight="56">
+        android:layout_marginBottom="24dp">
 
         <TextView
             android:layout_width="match_parent"
@@ -27,7 +26,6 @@
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:layout_width="@dimen/settings_screen_item_layout_width"
         android:layout_height="@dimen/settings_screen_item_layout_height"
-        android:layout_weight="@dimen/settings_screen_item_layout_weight"
         android:text="@string/settings_screen_item_dark_theme"
         android:layout_marginStart="@dimen/settings_screen_item_layout_marginStart"
         android:layout_marginEnd="@dimen/settings_screen_item_layout_marginEnd"
@@ -41,7 +39,6 @@
         android:layout_height="@dimen/settings_screen_item_layout_height"
         android:layout_marginStart="@dimen/settings_screen_item_layout_marginStart"
         android:layout_marginEnd="@dimen/settings_screen_item_layout_marginEnd"
-        android:layout_weight="@dimen/settings_screen_item_layout_weight"
         android:gravity="center_vertical"
         android:textColor="@color/settings_screen_item_text_color"
         android:drawableEnd="@drawable/ic_light_mode_share"
@@ -53,7 +50,6 @@
         android:layout_height="@dimen/settings_screen_item_layout_height"
         android:layout_marginStart="@dimen/settings_screen_item_layout_marginStart"
         android:layout_marginEnd="@dimen/settings_screen_item_layout_marginEnd"
-        android:layout_weight="@dimen/settings_screen_item_layout_weight"
         android:gravity="center_vertical"
         android:textColor="@color/settings_screen_item_text_color"
         android:drawableEnd="@drawable/ic_light_mode_support"
@@ -64,14 +60,10 @@
         android:layout_height="@dimen/settings_screen_item_layout_height"
         android:layout_marginStart="@dimen/settings_screen_item_layout_marginStart"
         android:layout_marginEnd="@dimen/settings_screen_item_layout_marginEnd"
-        android:layout_weight="@dimen/settings_screen_item_layout_weight"
         android:gravity="center_vertical"
         android:textColor="@color/settings_screen_item_text_color"
         android:drawableEnd="@drawable/ic_light_mode_arrow_forward"
-        android:text="@string/settings_screen_item_user_agreement" />
+        android:text="@string/settings_screen_item_user_agreement"
+        android:layout_marginBottom="476dp"/>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="476" />
 </LinearLayout>

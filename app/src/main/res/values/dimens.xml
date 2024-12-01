@@ -11,8 +11,7 @@
     <dimen name="main_screen_button_iconPadding">8dp</dimen>
     <!--Settings Screen-->
     <dimen name="settings_screen_item_layout_width">match_parent</dimen>
-    <dimen name="settings_screen_item_layout_height">0dp</dimen>
+    <dimen name="settings_screen_item_layout_height">61dp</dimen>
     <dimen name="settings_screen_item_layout_marginStart">16dp</dimen>
     <dimen name="settings_screen_item_layout_marginEnd">12dp</dimen>
-    <dimen name="settings_screen_item_layout_weight">61</dimen>
 </resources>
