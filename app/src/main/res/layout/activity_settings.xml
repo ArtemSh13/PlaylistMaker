@@ -51,19 +51,37 @@
 
     <TextView
         android:id="@+id/share"
-        style="@style/settings_screen_text_item"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="12dp"
+        android:layout_weight="61"
+        android:gravity="center_vertical"
+        android:textColor="@color/settings_screen_item_text_color"
         android:drawableEnd="@drawable/ic_light_mode_share"
         android:text="@string/settings_screen_item_share" />
 
     <TextView
         android:id="@+id/support"
-        style="@style/settings_screen_text_item"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="12dp"
+        android:layout_weight="61"
+        android:gravity="center_vertical"
+        android:textColor="@color/settings_screen_item_text_color"
         android:drawableEnd="@drawable/ic_light_mode_support"
         android:text="@string/settings_screen_item_support" />
 
     <TextView
         android:id="@+id/user_agreement"
-        style="@style/settings_screen_text_item"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="12dp"
+        android:layout_weight="61"
+        android:gravity="center_vertical"
+        android:textColor="@color/settings_screen_item_text_color"
         android:drawableEnd="@drawable/ic_light_mode_arrow_forward"
         android:text="@string/settings_screen_item_user_agreement" />
 
