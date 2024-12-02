@@ -19,8 +19,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="14dp"
             android:text="@string/main_screen_title"
-            android:textColor="@color/main_screen_title_color"
-            android:textSize="22sp" />
+            style="@style/main_screen_title" />
     </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
