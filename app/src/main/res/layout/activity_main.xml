@@ -40,7 +40,7 @@
             style="@style/main_screen_button"
             android:text="@string/main_screen_button_search"
             app:cornerRadius="@dimen/main_screen_button_cornerRadius"
-            app:icon="@drawable/ic_light_mode_inactive_search"
+            app:icon="@drawable/ic_inactive_search"
             app:iconGravity="textStart"
             app:iconPadding="@dimen/main_screen_button_iconPadding"
             app:iconTint="@color/main_screen_button_text_color" />
@@ -56,7 +56,7 @@
             style="@style/main_screen_button"
             android:text="@string/main_screen_button_library"
             app:cornerRadius="@dimen/main_screen_button_cornerRadius"
-            app:icon="@drawable/ic_light_mode_inactive_library"
+            app:icon="@drawable/ic_inactive_library"
             app:iconGravity="textStart"
             app:iconPadding="@dimen/main_screen_button_iconPadding"
             app:iconTint="@color/main_screen_button_text_color" />
@@ -72,7 +72,7 @@
             style="@style/main_screen_button"
             android:text="@string/main_screen_button_settings"
             app:cornerRadius="@dimen/main_screen_button_cornerRadius"
-            app:icon="@drawable/ic_light_mode_inactive_settings"
+            app:icon="@drawable/ic_inactive_settings"
             app:iconGravity="textStart"
             app:iconPadding="@dimen/main_screen_button_iconPadding"
             app:iconTint="@color/main_screen_button_text_color" />
