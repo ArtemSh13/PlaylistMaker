@@ -41,7 +41,7 @@
         android:layout_marginEnd="@dimen/settings_screen_item_layout_marginEnd"
         android:gravity="center_vertical"
         android:textColor="@color/settings_screen_item_text_color"
-        android:drawableEnd="@drawable/ic_light_mode_share"
+        android:drawableEnd="@drawable/ic_share"
         android:text="@string/settings_screen_item_share" />
 
     <TextView
@@ -52,7 +52,7 @@
         android:layout_marginEnd="@dimen/settings_screen_item_layout_marginEnd"
         android:gravity="center_vertical"
         android:textColor="@color/settings_screen_item_text_color"
-        android:drawableEnd="@drawable/ic_light_mode_support"
+        android:drawableEnd="@drawable/ic_support"
         android:text="@string/settings_screen_item_support" />
 
     <TextView
@@ -62,7 +62,7 @@
         android:layout_marginEnd="@dimen/settings_screen_item_layout_marginEnd"
         android:gravity="center_vertical"
         android:textColor="@color/settings_screen_item_text_color"
-        android:drawableEnd="@drawable/ic_light_mode_arrow_forward"
+        android:drawableEnd="@drawable/ic_arrow_forward"
         android:text="@string/settings_screen_item_user_agreement"
         android:layout_marginBottom="476dp"/>
 
