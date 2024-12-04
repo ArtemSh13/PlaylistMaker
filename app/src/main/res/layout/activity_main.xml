@@ -31,7 +31,7 @@
 
         <Button
             android:id="@+id/search_button"
-            android:layout_width="@dimen/main_screen_button_layout_width"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/main_screen_button_layout_height"
             android:layout_weight="@dimen/main_screen_button_layout_weight"
             android:layout_marginHorizontal="@dimen/main_screen_button_layout_marginHorizontal"
@@ -47,7 +47,7 @@
 
         <Button
             android:id="@+id/library_button"
-            android:layout_width="@dimen/main_screen_button_layout_width"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/main_screen_button_layout_height"
             android:layout_weight="@dimen/main_screen_button_layout_weight"
             android:layout_marginHorizontal="@dimen/main_screen_button_layout_marginHorizontal"
@@ -63,7 +63,7 @@
 
         <Button
             android:id="@+id/settings_button"
-            android:layout_width="@dimen/main_screen_button_layout_width"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/main_screen_button_layout_height"
             android:layout_weight="@dimen/main_screen_button_layout_weight"
             android:layout_marginHorizontal="@dimen/main_screen_button_layout_marginHorizontal"
