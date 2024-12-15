@@ -28,6 +28,7 @@
         <item name="android:drawablePadding">@dimen/search_screen_search_bar_drawablePadding</item>
         <item name="android:hint">@string/search_screen_search_bar_hint</item>
         <item name="android:inputType">text</item>
+        <item name="android:maxLines">@dimen/search_screen_search_bar_maxLines</item>
         <item name="android:textColorHint">@color/search_screen_search_bar_textColorHint</item>
         <item name="android:textSize">@dimen/search_screen_search_bar_textSize</item>
     </style>
