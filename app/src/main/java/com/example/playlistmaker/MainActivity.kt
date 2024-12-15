@@ -1,15 +1,9 @@
 package com.example.playlistmaker
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.playlistmaker.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -25,7 +19,14 @@ class MainActivity : AppCompatActivity() {
 
         //val searchButton = findViewById<Button>(R.id.search_button)
         val searchButton = binding.searchButton
-        val searchButtonClickListener: View.OnClickListener = View.OnClickListener { startActivity(Intent(this@MainActivity, SearchActivity::class.java)) }
+        val searchButtonClickListener: View.OnClickListener = View.OnClickListener {
+            startActivity(
+                Intent(
+                    this@MainActivity,
+                    SearchActivity::class.java
+                )
+            )
+        }
         searchButton.setOnClickListener(searchButtonClickListener)
 
         //val libraryButton = findViewById<Button>(R.id.library_button)
