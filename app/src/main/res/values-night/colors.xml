@@ -11,4 +11,8 @@
     <color name="settings_screen_item_text_color">#FFFFFF</color>
     <color name="settings_screen_item_switch_trackTint_color">#9FBBF3</color>
     <color name="settings_screen_item_switch_thumbTint_color">#3772E7</color>
+    <color name="search_screen_background_color">#1A1B22</color>
+    <color name="search_screen_title_color">#FFFFFF</color>
+    <color name="search_screen_search_bar_background">#FFFFFF</color>
+    <color name="search_screen_search_bar_textColorHint">#1A1B22</color>
 </resources>
