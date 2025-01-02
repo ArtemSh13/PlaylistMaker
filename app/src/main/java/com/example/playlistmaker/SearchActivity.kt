@@ -26,7 +26,7 @@ class SearchActivity : AppCompatActivity() {
 
         val clearSearchBarButton = binding.clearSearchBarButton
         clearSearchBarButton.setOnClickListener {
-            searchBar.setText("")
+            searchBar.text.clear()
         }
 
         val searchBarTextWatcher = object : TextWatcher {
