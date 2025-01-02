@@ -3,6 +3,7 @@ package com.example.playlistmaker
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -22,13 +23,19 @@ class SearchActivity : AppCompatActivity() {
         searchToolbar.setNavigationOnClickListener { finish() }
 
         val searchBar: EditText = binding.searchBar
+
+        val clearSearchBarButton = binding.clearSearchBarButton
+        clearSearchBarButton.setOnClickListener {
+            searchBar.setText("")
+        }
+
         val searchBarTextWatcher = object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 //TODO("Not yet implemented")
             }
 
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                //TODO("Not yet implemented")
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                clearSearchBarButton.visibility = clearButtonVisibility(s)
             }
 
             override fun afterTextChanged(p0: Editable?) {
@@ -36,5 +43,13 @@ class SearchActivity : AppCompatActivity() {
             }
         }
         searchBar.addTextChangedListener(searchBarTextWatcher)
+    }
+
+    private fun clearButtonVisibility(s: CharSequence?): Int {
+        return if (s.isNullOrEmpty()) {
+            View.GONE
+        } else {
+            View.VISIBLE
+        }
     }
 }
