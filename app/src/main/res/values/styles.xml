@@ -32,4 +32,12 @@
         <item name="android:textColorHint">@color/search_screen_search_bar_textColorHint</item>
         <item name="android:textSize">@dimen/search_screen_search_bar_textSize</item>
     </style>
+
+    <style name="search_screen_search_bar_clear_button">
+        <item name="android:layout_width">16dp</item>
+        <item name="android:layout_height">16dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:visibility">gone</item>
+    </style>
 </resources>
