@@ -23,4 +23,8 @@
     <dimen name="search_screen_search_bar_drawablePadding">8dp</dimen>
     <dimen name="search_screen_search_bar_textSize">16sp</dimen>
     <dimen name="search_screen_search_bar_paddingEnd">14dp</dimen>
+    <dimen name="search_screen_clear_search_bar_button_layout_width">16dp</dimen>
+    <dimen name="search_screen_clear_search_bar_button_layout_height">16dp</dimen>
+    <dimen name="search_screen_clear_search_bar_button_layout_marginHorizontal">28dp</dimen>
+    <dimen name="search_screen_clear_search_bar_button_layout_marginVertical">18dp</dimen>
 </resources>
