@@ -2,6 +2,7 @@ package com.example.playlistmaker
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +24,9 @@ class SettingsActivity : AppCompatActivity() {
 
         val shareButton = binding.share
         shareButton.setOnClickListener {onShareButtonClick(getString(R.string.settings_screen_item_share_link))}
+
+        val supportButton = binding.support
+        supportButton.setOnClickListener {onSupportButtonClick()}
     }
 
     private fun onShareButtonClick(text: String) {
@@ -32,5 +36,16 @@ class SettingsActivity : AppCompatActivity() {
             putExtra(Intent.EXTRA_TEXT, text)
         }
         startActivity(Intent.createChooser(shareIntent, "Share via"))
+    }
+
+    private fun onSupportButtonClick() {
+        val supportIntent = Intent(Intent.ACTION_SENDTO)
+        supportIntent.apply {
+            data = Uri.parse("mailto:")
+            putExtra(Intent.EXTRA_EMAIL, arrayOf(getString(R.string.settings_screen_item_support_mailto)))
+            putExtra(Intent.EXTRA_SUBJECT, getString(R.string.settings_screen_item_support_subj))
+            putExtra(Intent.EXTRA_TEXT, getString(R.string.settings_screen_item_support_message))
+        }
+        startActivity(Intent.createChooser(supportIntent, "Send email"))
     }
 }
