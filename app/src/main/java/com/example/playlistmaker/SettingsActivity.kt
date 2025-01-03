@@ -1,5 +1,7 @@
 package com.example.playlistmaker
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -18,5 +20,17 @@ class SettingsActivity : AppCompatActivity() {
         val settingsToolbar: Toolbar = binding.settingsToolbar
         settingsToolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back)
         settingsToolbar.setNavigationOnClickListener { finish() }
+
+        val shareButton = binding.share
+        shareButton.setOnClickListener {onShareButtonClick(getString(R.string.settings_screen_item_share_link))}
+    }
+
+    private fun onShareButtonClick(text: String) {
+        val shareIntent = Intent(Intent.ACTION_SEND)
+        shareIntent.apply {
+            type = "text/plain"
+            putExtra(Intent.EXTRA_TEXT, text)
+        }
+        startActivity(Intent.createChooser(shareIntent, "Share via"))
     }
 }
