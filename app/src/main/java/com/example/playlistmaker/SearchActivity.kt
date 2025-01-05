@@ -14,6 +14,13 @@ import com.example.playlistmaker.databinding.ActivitySearchBinding
 class SearchActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySearchBinding
 
+    private var searchBarInputTextValue = INPUT_TEXT_DEF
+
+    companion object {
+        const val SEARCH_BAR_INPUT_TEXT = "SEARCH_BAR_INPUT_TEXT"
+        const val INPUT_TEXT_DEF = ""
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySearchBinding.inflate(layoutInflater)
@@ -43,10 +50,23 @@ class SearchActivity : AppCompatActivity() {
             }
 
             override fun afterTextChanged(p0: Editable?) {
-                //TODO("Not yet implemented")
+                searchBarInputTextValue = searchBar.text.toString()
             }
         }
         searchBar.addTextChangedListener(searchBarTextWatcher)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(SEARCH_BAR_INPUT_TEXT, searchBarInputTextValue)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        val savedInstanceStateValue = savedInstanceState.getString(SEARCH_BAR_INPUT_TEXT)
+        if (savedInstanceStateValue != null) {
+            searchBarInputTextValue = savedInstanceStateValue
+        }
     }
 
     private fun clearButtonVisibility(s: CharSequence?): Int {
