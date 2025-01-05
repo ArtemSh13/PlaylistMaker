@@ -23,7 +23,7 @@ class SettingsActivity : AppCompatActivity() {
         settingsToolbar.setNavigationOnClickListener { finish() }
 
         val shareButton = binding.share
-        shareButton.setOnClickListener {onShareButtonClick(getString(R.string.settings_screen_item_share_link))}
+        shareButton.setOnClickListener {onShareButtonClick()}
 
         val supportButton = binding.support
         supportButton.setOnClickListener {onSupportButtonClick()}
@@ -33,11 +33,11 @@ class SettingsActivity : AppCompatActivity() {
 
     }
 
-    private fun onShareButtonClick(text: String) {
+    private fun onShareButtonClick() {
         val shareIntent = Intent(Intent.ACTION_SEND)
         shareIntent.apply {
             type = "text/plain"
-            putExtra(Intent.EXTRA_TEXT, text)
+            putExtra(Intent.EXTRA_TEXT, getString(R.string.settings_screen_item_share_link))
         }
         startActivity(Intent.createChooser(shareIntent, "Share via"))
     }
