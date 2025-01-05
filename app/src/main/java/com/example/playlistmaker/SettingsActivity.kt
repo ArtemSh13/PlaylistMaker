@@ -54,7 +54,7 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun onUserAgreementClick() {
-        val url = "https://yandex.ru/legal/practicum_offer/"
+        val url = getString(R.string.settings_screen_item_user_agreement_url)
         val userAgreementIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
         startActivity(Intent.createChooser(userAgreementIntent, "Open URL"))
     }
