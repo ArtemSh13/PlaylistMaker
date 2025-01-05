@@ -27,6 +27,10 @@ class SettingsActivity : AppCompatActivity() {
 
         val supportButton = binding.support
         supportButton.setOnClickListener {onSupportButtonClick()}
+
+        val userAgreementButton = binding.userAgreement
+        userAgreementButton.setOnClickListener {onUserAgreementClick()}
+
     }
 
     private fun onShareButtonClick(text: String) {
@@ -47,5 +51,11 @@ class SettingsActivity : AppCompatActivity() {
             putExtra(Intent.EXTRA_TEXT, getString(R.string.settings_screen_item_support_message))
         }
         startActivity(Intent.createChooser(supportIntent, "Send email"))
+    }
+
+    private fun onUserAgreementClick() {
+        val url = "https://yandex.ru/legal/practicum_offer/"
+        val userAgreementIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(Intent.createChooser(userAgreementIntent, "Open URL"))
     }
 }
