@@ -24,45 +24,41 @@
     </androidx.appcompat.widget.Toolbar>
 
     <com.google.android.material.switchmaterial.SwitchMaterial
+        style="@style/settings_screen_item"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/settings_screen_item_layout_height"
         android:text="@string/settings_screen_item_dark_theme"
         android:layout_marginStart="@dimen/settings_screen_item_layout_marginStart"
         android:layout_marginEnd="@dimen/settings_screen_item_layout_marginEnd"
-        android:textColor="@color/settings_screen_item_text_color"
         app:thumbTint="@color/settings_screen_item_switch_thumbTint_color"
         app:trackTint="@color/settings_screen_item_switch_trackTint_color"  />
 
     <TextView
         android:id="@+id/share"
+        style="@style/settings_screen_item"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/settings_screen_item_layout_height"
         android:layout_marginStart="@dimen/settings_screen_item_layout_marginStart"
         android:layout_marginEnd="@dimen/settings_screen_item_layout_marginEnd"
         android:gravity="center_vertical"
-        android:textColor="@color/settings_screen_item_text_color"
         android:drawableEnd="@drawable/ic_share"
         android:text="@string/settings_screen_item_share" />
 
     <TextView
         android:id="@+id/support"
+        style="@style/settings_screen_item"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/settings_screen_item_layout_height"
         android:layout_marginStart="@dimen/settings_screen_item_layout_marginStart"
         android:layout_marginEnd="@dimen/settings_screen_item_layout_marginEnd"
         android:gravity="center_vertical"
-        android:textColor="@color/settings_screen_item_text_color"
         android:drawableEnd="@drawable/ic_support"
         android:text="@string/settings_screen_item_support" />
 
     <TextView
         android:id="@+id/user_agreement"
+        style="@style/settings_screen_item"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/settings_screen_item_layout_height"
         android:layout_marginStart="@dimen/settings_screen_item_layout_marginStart"
         android:layout_marginEnd="@dimen/settings_screen_item_layout_marginEnd"
         android:gravity="center_vertical"
-        android:textColor="@color/settings_screen_item_text_color"
         android:drawableEnd="@drawable/ic_arrow_forward"
         android:text="@string/settings_screen_item_user_agreement"
         android:layout_marginBottom="476dp"/>

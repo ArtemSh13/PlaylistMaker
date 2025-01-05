@@ -40,4 +40,9 @@
         <item name="android:focusable">true</item>
         <item name="android:visibility">gone</item>
     </style>
+
+    <style name="settings_screen_item">
+        <item name="android:layout_height">@dimen/settings_screen_item_layout_height</item>
+        <item name="android:textColor">@color/settings_screen_item_text_color</item>
+    </style>
 </resources>
