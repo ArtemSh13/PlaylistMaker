@@ -29,8 +29,8 @@
         android:text="@string/settings_screen_item_dark_theme"
         android:layout_marginStart="@dimen/settings_screen_item_layout_marginStart"
         android:layout_marginEnd="@dimen/settings_screen_item_layout_marginEnd"
-        app:thumbTint="@color/settings_screen_item_switch_thumbTint_color"
-        app:trackTint="@color/settings_screen_item_switch_trackTint_color"  />
+        app:thumbTint="@color/settings_screen_switch_thumb_colors"
+        app:trackTint="@color/settings_screen_switch_track_colors" />
 
     <TextView
         android:id="@+id/share"
