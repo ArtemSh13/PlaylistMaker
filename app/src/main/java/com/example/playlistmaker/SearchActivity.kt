@@ -9,6 +9,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.isVisible
 import com.example.playlistmaker.databinding.ActivitySearchBinding
 
 class SearchActivity : AppCompatActivity() {
@@ -46,7 +47,7 @@ class SearchActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                clearSearchBarButton.visibility = clearButtonVisibility(s)
+                clearSearchBarButton.isVisible = !s.isNullOrEmpty()
             }
 
             override fun afterTextChanged(p0: Editable?) {
@@ -66,14 +67,6 @@ class SearchActivity : AppCompatActivity() {
         val savedInstanceStateValue = savedInstanceState.getString(SEARCH_BAR_INPUT_TEXT)
         if (savedInstanceStateValue != null) {
             searchBarInputTextValue = savedInstanceStateValue
-        }
-    }
-
-    private fun clearButtonVisibility(s: CharSequence?): Int {
-        return if (s.isNullOrEmpty()) {
-            View.GONE
-        } else {
-            View.VISIBLE
         }
     }
 }
