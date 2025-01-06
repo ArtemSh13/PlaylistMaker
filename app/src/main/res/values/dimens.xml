@@ -27,4 +27,5 @@
     <dimen name="search_screen_clear_search_bar_button_layout_height">16dp</dimen>
     <dimen name="search_screen_clear_search_bar_button_layout_marginHorizontal">28dp</dimen>
     <dimen name="search_screen_clear_search_bar_button_layout_marginVertical">18dp</dimen>
+    <dimen name="search_screen_clear_search_bar_cursor_width">2dp</dimen>
 </resources>
