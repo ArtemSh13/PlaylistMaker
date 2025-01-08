@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/search_screen_background_color"
     android:orientation="vertical">
 
@@ -10,16 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/search_screen_title_layout_height"
         android:layout_marginStart="@dimen/search_screen_title_layout_marginStart"
-        android:layout_marginBottom="@dimen/search_screen_title_layout_marginBottom">
-
-        <TextView
-            style="@style/search_screen_title"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/search_screen_title_text_layout_marginStart"
-            android:layout_marginTop="@dimen/search_screen_title_text_layout_marginTop"
-            android:text="@string/search_screen_title" />
-    </androidx.appcompat.widget.Toolbar>
+        android:layout_marginBottom="@dimen/search_screen_title_layout_marginBottom"
+        app:title="@string/search_screen_title"
+        app:titleTextAppearance="@style/search_screen_title"
+        app:titleTextColor="@color/search_screen_title_color"
+        app:titleMarginStart="@dimen/search_screen_title_text_layout_marginStart"
+        app:titleMarginTop="@dimen/search_screen_title_text_layout_marginTop" />
 
     <FrameLayout
         android:layout_width="match_parent"
