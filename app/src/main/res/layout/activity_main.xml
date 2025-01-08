@@ -18,59 +18,59 @@
         app:titleMarginStart="@dimen/main_screen_title_titleMarginStart"
         app:titleMarginTop="@dimen/main_screen_title_titleMarginTop" />
 
-    <LinearLayout
+    <Space
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="20dp"
-        android:layout_weight="93"
-        android:orientation="vertical">
+        android:layout_height="@dimen/main_screen_space_header" />
+    
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/main_screen_button_layout_height"
+        android:layout_weight="@dimen/main_screen_button_layout_weight"
+        android:layout_marginHorizontal="@dimen/main_screen_button_layout_marginHorizontal"
+        android:layout_marginVertical="@dimen/main_screen_button_layout_marginVertical"
+        android:layout_gravity="center_horizontal"
+        style="@style/main_screen_button"
+        android:text="@string/main_screen_button_search"
+        app:cornerRadius="@dimen/main_screen_button_cornerRadius"
+        app:icon="@drawable/ic_inactive_search"
+        app:iconGravity="textStart"
+        app:iconPadding="@dimen/main_screen_button_iconPadding"
+        app:iconTint="@color/main_screen_button_text_color" />
 
-        <Button
-            android:id="@+id/search_button"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/main_screen_button_layout_height"
-            android:layout_weight="@dimen/main_screen_button_layout_weight"
-            android:layout_marginHorizontal="@dimen/main_screen_button_layout_marginHorizontal"
-            android:layout_marginVertical="@dimen/main_screen_button_layout_marginVertical"
-            android:layout_gravity="center_horizontal"
-            style="@style/main_screen_button"
-            android:text="@string/main_screen_button_search"
-            app:cornerRadius="@dimen/main_screen_button_cornerRadius"
-            app:icon="@drawable/ic_inactive_search"
-            app:iconGravity="textStart"
-            app:iconPadding="@dimen/main_screen_button_iconPadding"
-            app:iconTint="@color/main_screen_button_text_color" />
+    <Button
+        android:id="@+id/library_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/main_screen_button_layout_height"
+        android:layout_weight="@dimen/main_screen_button_layout_weight"
+        android:layout_marginHorizontal="@dimen/main_screen_button_layout_marginHorizontal"
+        android:layout_marginVertical="@dimen/main_screen_button_layout_marginVertical"
+        android:layout_gravity="center_horizontal"
+        style="@style/main_screen_button"
+        android:text="@string/main_screen_button_library"
+        app:cornerRadius="@dimen/main_screen_button_cornerRadius"
+        app:icon="@drawable/ic_inactive_library"
+        app:iconGravity="textStart"
+        app:iconPadding="@dimen/main_screen_button_iconPadding"
+        app:iconTint="@color/main_screen_button_text_color" />
 
-        <Button
-            android:id="@+id/library_button"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/main_screen_button_layout_height"
-            android:layout_weight="@dimen/main_screen_button_layout_weight"
-            android:layout_marginHorizontal="@dimen/main_screen_button_layout_marginHorizontal"
-            android:layout_marginVertical="@dimen/main_screen_button_layout_marginVertical"
-            android:layout_gravity="center_horizontal"
-            style="@style/main_screen_button"
-            android:text="@string/main_screen_button_library"
-            app:cornerRadius="@dimen/main_screen_button_cornerRadius"
-            app:icon="@drawable/ic_inactive_library"
-            app:iconGravity="textStart"
-            app:iconPadding="@dimen/main_screen_button_iconPadding"
-            app:iconTint="@color/main_screen_button_text_color" />
-
-        <Button
-            android:id="@+id/settings_button"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/main_screen_button_layout_height"
-            android:layout_weight="@dimen/main_screen_button_layout_weight"
-            android:layout_marginHorizontal="@dimen/main_screen_button_layout_marginHorizontal"
-            android:layout_marginVertical="@dimen/main_screen_button_layout_marginVertical"
-            android:layout_gravity="center_horizontal"
-            style="@style/main_screen_button"
-            android:text="@string/main_screen_button_settings"
-            app:cornerRadius="@dimen/main_screen_button_cornerRadius"
-            app:icon="@drawable/ic_inactive_settings"
-            app:iconGravity="textStart"
-            app:iconPadding="@dimen/main_screen_button_iconPadding"
-            app:iconTint="@color/main_screen_button_text_color" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/settings_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/main_screen_button_layout_height"
+        android:layout_weight="@dimen/main_screen_button_layout_weight"
+        android:layout_marginHorizontal="@dimen/main_screen_button_layout_marginHorizontal"
+        android:layout_marginVertical="@dimen/main_screen_button_layout_marginVertical"
+        android:layout_gravity="center_horizontal"
+        style="@style/main_screen_button"
+        android:text="@string/main_screen_button_settings"
+        app:cornerRadius="@dimen/main_screen_button_cornerRadius"
+        app:icon="@drawable/ic_inactive_settings"
+        app:iconGravity="textStart"
+        app:iconPadding="@dimen/main_screen_button_iconPadding"
+        app:iconTint="@color/main_screen_button_text_color" />
+    
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/main_screen_space_footer" />
 </LinearLayout>
