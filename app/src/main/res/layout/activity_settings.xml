@@ -9,19 +9,14 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/settings_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginBottom="24dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="14dp"
-            android:text="@string/settings_screen_title"
-            android:textColor="@color/settings_screen_title_color"
-            android:textSize="22sp" />
-    </androidx.appcompat.widget.Toolbar>
+        android:layout_height="@dimen/settings_screen_toolbar_layout_height"
+        android:layout_marginStart="@dimen/settings_screen_toolbar_layout_marginStart"
+        android:layout_marginBottom="@dimen/settings_screen_toolbar_layout_marginBottom"
+        app:title="@string/settings_screen_title"
+        app:titleTextAppearance="@style/settings_screen_title"
+        app:titleTextColor="@color/settings_screen_title_color"
+        app:titleMarginStart="@dimen/settings_screen_toolbar_titleMarginStart"
+        app:titleMarginTop="@dimen/settings_screen_toolbar_titleMarginTop" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         style="@style/settings_screen_item"
