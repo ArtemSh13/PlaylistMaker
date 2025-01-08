@@ -7,6 +7,11 @@
     <dimen name="main_screen_button_layout_marginVertical">8dp</dimen>
     <dimen name="main_screen_button_cornerRadius">16dp</dimen>
     <dimen name="main_screen_button_iconPadding">8dp</dimen>
+    <dimen name="main_screen_title_titleMarginStart">12dp</dimen>
+    <dimen name="main_screen_title_titleMarginTop">14dp</dimen>
+    <dimen name="main_screen_toolbar_layout_height">0dp</dimen>
+    <dimen name="main_screen_toolbar_layout_marginStart">4dp</dimen>
+    <dimen name="main_screen_toolbar_layout_weight">7</dimen>
     <!--Settings Screen-->
     <dimen name="settings_screen_item_layout_height">61dp</dimen>
     <dimen name="settings_screen_item_layout_marginStart">16dp</dimen>

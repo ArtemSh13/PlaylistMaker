@@ -9,18 +9,14 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/main_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="4dp"
-        android:layout_weight="7">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="14dp"
-            android:text="@string/main_screen_title"
-            style="@style/main_screen_title" />
-    </androidx.appcompat.widget.Toolbar>
+        android:layout_height="@dimen/main_screen_toolbar_layout_height"
+        android:layout_marginStart="@dimen/main_screen_toolbar_layout_marginStart"
+        android:layout_weight="@dimen/main_screen_toolbar_layout_weight"
+        app:title="@string/main_screen_title"
+        app:titleTextAppearance="@style/main_screen_title"
+        app:titleTextColor="@color/main_screen_title_color"
+        app:titleMarginStart="@dimen/main_screen_title_titleMarginStart"
+        app:titleMarginTop="@dimen/main_screen_title_titleMarginTop" />
 
     <LinearLayout
         android:layout_width="match_parent"
