@@ -20,7 +20,8 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="@dimen/main_screen_space_header" />
+        android:layout_height="0dp"
+        android:layout_weight="@dimen/main_screen_space_header" />
     
     <Button
         android:id="@+id/search_button"
@@ -72,5 +73,6 @@
     
     <Space
         android:layout_width="match_parent"
-        android:layout_height="@dimen/main_screen_space_footer" />
+        android:layout_height="0dp"
+        android:layout_weight="@dimen/main_screen_space_footer"/>
 </LinearLayout>
