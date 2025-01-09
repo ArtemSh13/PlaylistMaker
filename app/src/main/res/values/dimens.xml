@@ -12,8 +12,9 @@
     <dimen name="main_screen_toolbar_layout_height">0dp</dimen>
     <dimen name="main_screen_toolbar_layout_marginStart">4dp</dimen>
     <dimen name="main_screen_toolbar_layout_weight">56</dimen>
-    <dimen name="main_screen_space_header">16</dimen>
-    <dimen name="main_screen_space_footer">20</dimen>
+    <dimen name="main_screen_space_height">0dp</dimen>
+    <dimen name="main_screen_space_header_layout_weight">16</dimen>
+    <dimen name="main_screen_space_footer_layout_weight">20</dimen>
     <!--Settings Screen-->
     <dimen name="settings_screen_item_layout_height">61dp</dimen>
     <dimen name="settings_screen_item_layout_marginStart">16dp</dimen>
