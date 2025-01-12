@@ -9,4 +9,11 @@
     <string name="settings_screen_item_share">Поделиться приложением</string>
     <string name="settings_screen_item_support">Написать в поддержку</string>
     <string name="settings_screen_item_user_agreement">Пользовательское соглашение</string>
+    <string name="search_screen_title">Поиск</string>
+    <string name="search_screen_search_bar_hint">Поиск</string>
+    <string name="settings_screen_item_share_link">https://practicum.yandex.ru/android-developer/</string>
+    <string name="settings_screen_item_support_mailto">mozg1303@yandex.ru</string>
+    <string name="settings_screen_item_support_subj">Сообщение разработчикам и разработчицам приложения Playlist Maker</string>
+    <string name="settings_screen_item_support_message">Спасибо разработчикам и разработчицам за крутое приложение!</string>
+    <string name="settings_screen_item_user_agreement_url">https://yandex.ru/legal/practicum_offer/</string>
 </resources>

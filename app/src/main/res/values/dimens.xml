@@ -1,17 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--Main Screen-->
-    <dimen name="main_screen_button_layout_width">match_parent</dimen>
     <dimen name="main_screen_button_layout_height">0dp</dimen>
-    <dimen name="main_screen_button_layout_weight">1</dimen>
+    <dimen name="main_screen_button_layout_weight">236</dimen>
     <dimen name="main_screen_button_layout_marginHorizontal">16dp</dimen>
     <dimen name="main_screen_button_layout_marginVertical">8dp</dimen>
-    <dimen name="main_screen_button_layout_layout_gravity">center_horizontal</dimen>
     <dimen name="main_screen_button_cornerRadius">16dp</dimen>
     <dimen name="main_screen_button_iconPadding">8dp</dimen>
+    <dimen name="main_screen_title_titleMarginStart">12dp</dimen>
+    <dimen name="main_screen_title_titleMarginTop">14dp</dimen>
+    <dimen name="main_screen_toolbar_layout_height">0dp</dimen>
+    <dimen name="main_screen_toolbar_layout_marginStart">4dp</dimen>
+    <dimen name="main_screen_toolbar_layout_weight">56</dimen>
+    <dimen name="main_screen_space_height">0dp</dimen>
+    <dimen name="main_screen_space_header_layout_weight">16</dimen>
+    <dimen name="main_screen_space_footer_layout_weight">20</dimen>
     <!--Settings Screen-->
-    <dimen name="settings_screen_item_layout_width">match_parent</dimen>
     <dimen name="settings_screen_item_layout_height">61dp</dimen>
     <dimen name="settings_screen_item_layout_marginStart">16dp</dimen>
     <dimen name="settings_screen_item_layout_marginEnd">12dp</dimen>
+    <dimen name="settings_screen_toolbar_layout_height">56dp</dimen>
+    <dimen name="settings_screen_toolbar_layout_marginStart">4dp</dimen>
+    <dimen name="settings_screen_toolbar_layout_marginBottom">24dp</dimen>
+    <dimen name="settings_screen_toolbar_titleMarginStart">12dp</dimen>
+    <dimen name="settings_screen_toolbar_titleMarginTop">14dp</dimen>
+    <!--Search Screen-->
+    <dimen name="search_screen_title_layout_height">56dp</dimen>
+    <dimen name="search_screen_title_layout_marginStart">4dp</dimen>
+    <dimen name="search_screen_title_layout_marginBottom">8dp</dimen>
+    <dimen name="search_screen_title_text_layout_marginStart">12dp</dimen>
+    <dimen name="search_screen_title_text_layout_marginTop">14dp</dimen>
+    <dimen name="search_screen_title_textSize">22sp</dimen>
+    <dimen name="search_screen_search_bar_layout_height">52dp</dimen>
+    <dimen name="search_screen_search_bar_layout_marginHorizontal">16dp</dimen>
+    <dimen name="search_screen_search_bar_drawablePadding">8dp</dimen>
+    <dimen name="search_screen_search_bar_textSize">16sp</dimen>
+    <dimen name="search_screen_search_bar_paddingEnd">14dp</dimen>
+    <dimen name="search_screen_clear_search_bar_button_layout_width">16dp</dimen>
+    <dimen name="search_screen_clear_search_bar_button_layout_height">16dp</dimen>
+    <dimen name="search_screen_clear_search_bar_button_layout_marginHorizontal">28dp</dimen>
+    <dimen name="search_screen_clear_search_bar_button_layout_marginVertical">18dp</dimen>
+    <dimen name="search_screen_clear_search_bar_cursor_width">2dp</dimen>
 </resources>

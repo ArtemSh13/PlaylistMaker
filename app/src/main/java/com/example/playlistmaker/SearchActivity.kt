@@ -1,20 +1,72 @@
 package com.example.playlistmaker
 
+import android.content.Context
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.appcompat.widget.Toolbar
+import androidx.core.view.isVisible
+import com.example.playlistmaker.databinding.ActivitySearchBinding
 
 class SearchActivity : AppCompatActivity() {
+    private lateinit var binding: ActivitySearchBinding
+
+    private var searchBarInputTextValue = INPUT_TEXT_DEF
+
+    companion object {
+        const val SEARCH_BAR_INPUT_TEXT = "SEARCH_BAR_INPUT_TEXT"
+        const val INPUT_TEXT_DEF = ""
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_search)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        binding = ActivitySearchBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+
+        val searchToolbar: Toolbar = binding.searchToolbar
+        searchToolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back)
+        searchToolbar.setNavigationOnClickListener { finish() }
+
+        val searchBar: EditText = binding.searchBar
+
+        val clearSearchBarButton = binding.clearSearchBarButton
+        clearSearchBarButton.setOnClickListener {
+            searchBar.text.clear()
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(view.windowToken, 0)
+        }
+
+        val searchBarTextWatcher = object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                //TODO("Not yet implemented")
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                clearSearchBarButton.isVisible = !s.isNullOrEmpty()
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                searchBarInputTextValue = searchBar.text.toString()
+            }
+        }
+        searchBar.addTextChangedListener(searchBarTextWatcher)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(SEARCH_BAR_INPUT_TEXT, searchBarInputTextValue)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        val savedInstanceStateValue = savedInstanceState.getString(SEARCH_BAR_INPUT_TEXT)
+        if (savedInstanceStateValue != null) {
+            searchBarInputTextValue = savedInstanceStateValue
         }
     }
 }
