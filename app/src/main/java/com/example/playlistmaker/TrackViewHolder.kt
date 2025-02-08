@@ -5,9 +5,15 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class TrackViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    private val trackTextDescription: TextView = itemView.findViewById(R.id.trackTextDescription)
+    private val trackName: TextView = itemView.findViewById(R.id.track_name)
+    private val artistName: TextView = itemView.findViewById(R.id.artist_name)
+    private val trackTime: TextView = itemView.findViewById(R.id.track_time)
+    private val artworkUrl100: TextView = itemView.findViewById(R.id.artwork_url_100)
 
     fun bind(model: Track) {
-        trackTextDescription.text = model.trackName
+        this.trackName.text = model.trackName
+        this.artistName.text = model.artistName
+        this.trackTime.text = model.trackTime
+        this.artworkUrl100.text = model.artworkUrl100
     }
 }
