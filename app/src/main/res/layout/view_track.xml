@@ -7,7 +7,7 @@
     android:layout_marginEnd="@dimen/search_screen_track_item_general_margin_end" >
     <ImageView
         android:id="@+id/track_artwork"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/search_screen_track_item_track_artwork_layout_width"
         android:layout_weight="@dimen/search_screen_track_item_track_artwork_layout_weight"
         android:layout_height="@dimen/search_screen_track_item_track_artwork_layout_height"
         android:layout_margin="@dimen/search_screen_track_item_track_artwork_layout_margin"
