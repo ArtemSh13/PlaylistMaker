@@ -22,7 +22,6 @@
         <TextView
             android:id="@+id/track_name"
             style="@style/search_screen_track_item_track_name"
-            android:textFontWeight="400"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/search_screen_track_item_track_name_layout_height"
             android:layout_marginBottom="@dimen/search_screen_track_item_track_name_layout_marginBottom" />
@@ -34,7 +33,7 @@
                 android:id="@+id/artist_name"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textSize="@dimen/search_screen_track_item_track_sub_desc_textSize" />
+                style="@style/search_screen_track_item_track_desc" />
             <ImageView
                 android:layout_width="@dimen/search_screen_track_item_track_sub_desc_middot_size"
                 android:layout_height="@dimen/search_screen_track_item_track_sub_desc_middot_size"
@@ -44,7 +43,7 @@
                 android:id="@+id/track_time"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textSize="@dimen/search_screen_track_item_track_sub_desc_textSize" />
+                style="@style/search_screen_track_item_track_desc" />
         </LinearLayout>
     </LinearLayout>
     <ImageView
