@@ -37,6 +37,10 @@
             android:layout_marginVertical="@dimen/search_screen_clear_search_bar_button_layout_marginVertical"
             android:src="@drawable/ic_clear_button" />
     </FrameLayout>
+    
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/search_screen_space_between_bar_n_track_list" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/track_list"
