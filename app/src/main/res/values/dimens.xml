@@ -56,6 +56,7 @@
     <dimen name="search_screen_track_item_track_name_layout_height">19dp</dimen>
     <dimen name="search_screen_track_item_track_name_layout_marginBottom">1dp</dimen>
     <dimen name="search_screen_track_item_track_name_textSize">16sp</dimen>
+    <dimen name="search_screen_track_item_track_name_textFontWeight">400</dimen>
     <dimen name="search_screen_track_item_track_sub_desc_layout_height">13dp</dimen>
     <dimen name="search_screen_track_item_track_sub_desc_textSize">11sp</dimen>
     <dimen name="search_screen_track_item_track_sub_desc_middot_size">3dp</dimen>
