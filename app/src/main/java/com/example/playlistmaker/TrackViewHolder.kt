@@ -19,6 +19,8 @@ class TrackViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         this.trackTime.text = model.trackTime
         Glide.with(this.itemView)
             .load(model.artworkUrl100)
+            .placeholder(R.drawable.ic_artwork_placeholder)
+            .error(R.drawable.ic_artwork_placeholder)
             .transform(RoundedCorners(4))
             .into(trackArtwork)
     }
