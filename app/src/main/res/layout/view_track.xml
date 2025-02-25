@@ -34,6 +34,7 @@
             <TextView
                 android:id="@+id/artist_name"
                 android:layout_width="wrap_content"
+                android:maxWidth="@dimen/search_screen_track_item_track_artist_maxWidth"
                 android:layout_height="match_parent"
                 android:maxLines="1"
                 android:ellipsize="end"
@@ -46,6 +47,7 @@
             <TextView
                 android:id="@+id/track_time"
                 android:layout_width="wrap_content"
+                android:maxWidth="@dimen/search_screen_track_item_track_time_maxWidth"
                 android:layout_height="match_parent"
                 android:maxLines="1"
                 android:ellipsize="end"

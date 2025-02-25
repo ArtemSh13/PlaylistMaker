@@ -60,6 +60,8 @@
     <dimen name="search_screen_track_item_track_sub_desc_textSize">11sp</dimen>
     <dimen name="search_screen_track_item_track_sub_desc_middot_size">3dp</dimen>
     <dimen name="search_screen_track_item_track_time_layout_margin">6.5dp</dimen>
+    <dimen name="search_screen_track_item_track_artist_maxWidth">186dp</dimen>
+    <dimen name="search_screen_track_item_track_time_maxWidth">64dp</dimen>
     <dimen name="search_screen_track_item_arrow_layout_width">0dp</dimen>
     <dimen name="search_screen_track_item_arrow_layout_weight">24</dimen>
     <dimen name="search_screen_track_item_arrow_layout_height">24dp</dimen>
