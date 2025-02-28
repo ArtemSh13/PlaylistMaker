@@ -14,4 +14,6 @@
     <color name="search_screen_title_color">#FFFFFF</color>
     <color name="search_screen_search_bar_background">#FFFFFF</color>
     <color name="search_screen_search_bar_textColorHint">#1A1B22</color>
+    <color name="search_screen_track_item_track_name_color">#FFFFFF</color>
+    <color name="search_screen_track_item_track_sub_desc_color">#FFFFFF</color>
 </resources>

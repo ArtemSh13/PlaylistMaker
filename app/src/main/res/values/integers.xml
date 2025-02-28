@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="search_screen_track_item_track_name_textFontWeight">400</integer>
+    <integer name="search_screen_track_item_track_sub_desc_textFontWeight">400</integer>
+</resources>

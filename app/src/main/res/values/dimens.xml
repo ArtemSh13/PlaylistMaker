@@ -41,4 +41,30 @@
     <dimen name="search_screen_clear_search_bar_button_layout_marginHorizontal">28dp</dimen>
     <dimen name="search_screen_clear_search_bar_button_layout_marginVertical">18dp</dimen>
     <dimen name="search_screen_clear_search_bar_cursor_width">2dp</dimen>
+    <!-- Search Screen -> Track Item -->
+    <dimen name="search_screen_track_item_general_height">61dp</dimen>
+    <dimen name="search_screen_track_item_general_margin_start">5dp</dimen>
+    <dimen name="search_screen_track_item_general_margin_end">4dp</dimen>
+    <dimen name="search_screen_track_item_track_artwork_layout_width">0dp</dimen>
+    <dimen name="search_screen_track_item_track_artwork_layout_weight">45</dimen>
+    <dimen name="search_screen_track_item_track_artwork_layout_height">45dp</dimen>
+    <dimen name="search_screen_track_item_track_artwork_layout_margin">8dp</dimen>
+    <dimen name="search_screen_track_item_track_desc_layout_width">0dp</dimen>
+    <dimen name="search_screen_track_item_track_desc_layout_weight">250</dimen>
+    <dimen name="search_screen_track_item_track_desc_layout_height">33dp</dimen>
+    <dimen name="search_screen_track_item_track_desc_layout_marginVertical">14dp</dimen>
+    <dimen name="search_screen_track_item_track_name_layout_height">19dp</dimen>
+    <dimen name="search_screen_track_item_track_name_layout_marginBottom">1dp</dimen>
+    <dimen name="search_screen_track_item_track_name_textSize">16sp</dimen>
+    <dimen name="search_screen_track_item_track_sub_desc_layout_height">13dp</dimen>
+    <dimen name="search_screen_track_item_track_sub_desc_textSize">11sp</dimen>
+    <dimen name="search_screen_track_item_track_sub_desc_middot_size">3dp</dimen>
+    <dimen name="search_screen_track_item_track_time_layout_margin">6.5dp</dimen>
+    <dimen name="search_screen_track_item_track_artist_maxWidth">186dp</dimen>
+    <dimen name="search_screen_track_item_track_time_maxWidth">64dp</dimen>
+    <dimen name="search_screen_track_item_arrow_layout_width">0dp</dimen>
+    <dimen name="search_screen_track_item_arrow_layout_weight">24</dimen>
+    <dimen name="search_screen_track_item_arrow_layout_height">24dp</dimen>
+    <dimen name="search_screen_track_item_arrow_layout_margin">8dp</dimen>
+    <dimen name="search_screen_space_between_bar_n_track_list">16dp</dimen>
 </resources>

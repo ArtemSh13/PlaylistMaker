@@ -10,6 +10,8 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.playlistmaker.databinding.ActivitySearchBinding
 
 class SearchActivity : AppCompatActivity() {
@@ -55,6 +57,10 @@ class SearchActivity : AppCompatActivity() {
             }
         }
         searchBar.addTextChangedListener(searchBarTextWatcher)
+
+        val recycler = findViewById<RecyclerView>(R.id.track_list)
+        recycler.layoutManager = LinearLayoutManager(this)
+        recycler.adapter = TrackAdapter(tracks = TracksMock.mockTrackList)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
