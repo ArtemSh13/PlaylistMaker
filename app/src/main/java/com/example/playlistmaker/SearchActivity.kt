@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -59,8 +60,15 @@ class SearchActivity : AppCompatActivity() {
         searchBar.addTextChangedListener(searchBarTextWatcher)
 
         val recycler = findViewById<RecyclerView>(R.id.track_list)
-        recycler.layoutManager = LinearLayoutManager(this)
-        recycler.adapter = TrackAdapter(tracks = TracksMock.mockTrackList)
+
+        searchBar.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                recycler.layoutManager = LinearLayoutManager(this)
+                recycler.adapter = TrackAdapter(tracks = TracksMock.mockTrackList)
+                true
+            }
+            false
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

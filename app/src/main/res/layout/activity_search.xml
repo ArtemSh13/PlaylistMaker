@@ -27,7 +27,9 @@
             style="@style/search_screen_search_bar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/search_screen_search_bar_layout_height"
-            android:layout_marginHorizontal="@dimen/search_screen_search_bar_layout_marginHorizontal" />
+            android:layout_marginHorizontal="@dimen/search_screen_search_bar_layout_marginHorizontal"
+            android:imeOptions="actionDone"
+            android:singleLine="true" />
 
         <ImageView
             android:id="@+id/clear_search_bar_button"
