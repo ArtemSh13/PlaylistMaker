@@ -4,7 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
+import android.util.Log
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
@@ -14,9 +14,20 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.playlistmaker.databinding.ActivitySearchBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 
 class SearchActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySearchBinding
+    private val retrofit = Retrofit.Builder()
+        .baseUrl("https://itunes.apple.com/")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+    private val iTunesAPIService = retrofit.create<iTunesAPI>()
 
     private var searchBarInputTextValue = INPUT_TEXT_DEF
 
@@ -59,12 +70,36 @@ class SearchActivity : AppCompatActivity() {
         }
         searchBar.addTextChangedListener(searchBarTextWatcher)
 
-        val recycler = findViewById<RecyclerView>(R.id.track_list)
+        val recycler: RecyclerView = binding.trackList
+        recycler.layoutManager = LinearLayoutManager(this)
 
         searchBar.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                recycler.layoutManager = LinearLayoutManager(this)
-                recycler.adapter = TrackAdapter(tracks = TracksMock.mockTrackList)
+                iTunesAPIService.getSongsByTerm(searchBar.text.toString())
+                    .enqueue(
+                        object : Callback<iTunesResponse>{
+                            override fun onResponse(call: Call<iTunesResponse>, response: Response<iTunesResponse>) {
+                                // Получили ответ от сервера
+                                if (response.isSuccessful) {
+                                    // Наш запрос был удачным, получаем наши объекты
+                                    val tracks = response.body()?.results.orEmpty()
+                                    recycler.adapter = TrackAdapter(tracks = tracks)
+                                } else {
+                                    // Сервер отклонил наш запрос с ошибкой
+                                    Log.d(
+                                        "iTunesAPIService",
+                                        response.errorBody()?.string() ?: ""
+                                    )
+                                }
+                            }
+
+                            override fun onFailure(call: Call<iTunesResponse>, t: Throwable) {
+                                // Не смогли присоединиться к серверу
+                                // Выводим ошибку в лог, что-то пошло не так
+                                t.printStackTrace()
+                            }
+                        }
+                    )
                 true
             }
             false
