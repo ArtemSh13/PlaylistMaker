@@ -16,4 +16,8 @@
     <string name="settings_screen_item_support_subj">Сообщение разработчикам и разработчицам приложения Playlist Maker</string>
     <string name="settings_screen_item_support_message">Спасибо разработчикам и разработчицам за крутое приложение!</string>
     <string name="settings_screen_item_user_agreement_url">https://yandex.ru/legal/practicum_offer/</string>
+    <string name="search_screen_stub_nothing_found_primary_text">Ничего не нашлось</string>
+    <string name="search_screen_stub_nothing_found_secondary_text"></string>
+    <string name="search_screen_stub_connection_problem_primary_text">Проблемы со связью</string>
+    <string name="search_screen_stub_connection_problem_secondary_text">Загрузка не удалась. Проверьте подключение к интернету</string>
 </resources>

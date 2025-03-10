@@ -47,6 +47,35 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/track_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:id="@+id/stub"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone" >
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="86dp" />
+        <ImageView
+            android:id="@+id/stub_image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center" />
+        <TextView
+            android:id="@+id/stub_primary_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            style="@style/search_screen_stub_text" />
+        <TextView
+            android:id="@+id/stub_secondary_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            style="@style/search_screen_stub_text" />
+    </LinearLayout>
 
 </LinearLayout>

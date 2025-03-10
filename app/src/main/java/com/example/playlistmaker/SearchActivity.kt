@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
@@ -73,6 +74,13 @@ class SearchActivity : AppCompatActivity() {
         val recycler: RecyclerView = binding.trackList
         recycler.layoutManager = LinearLayoutManager(this)
 
+//        val nothingFoundStub = binding.stubNothingFound
+//        val connectionProblemStub = binding.stubConnectionProblem
+        val stub = binding.stub
+        val stubPrimaryText = binding.stubPrimaryText
+        val stubSecondaryText = binding.stubSecondaryText
+        val stubImage = binding.stubImage
+
         searchBar.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 iTunesAPIService.getSongsByTerm(searchBar.text.toString())
@@ -82,14 +90,28 @@ class SearchActivity : AppCompatActivity() {
                                 // Получили ответ от сервера
                                 if (response.isSuccessful) {
                                     // Наш запрос был удачным, получаем наши объекты
-                                    val tracks = response.body()?.results.orEmpty()
-                                    recycler.adapter = TrackAdapter(tracks = tracks)
+                                    if (response.body()!!.resultCount > 0) {
+                                        stub.visibility = View.GONE
+
+                                        recycler.visibility = View.VISIBLE
+                                        val responseTracks = response.body()?.results.orEmpty()
+                                        recycler.adapter = TrackAdapter(tracks = responseTracks)
+                                    } else {
+                                        recycler.visibility = View.GONE
+
+                                        stubPrimaryText.setText(R.string.search_screen_stub_nothing_found_primary_text)
+                                        stubSecondaryText.setText(R.string.search_screen_stub_nothing_found_secondary_text)
+                                        stubImage.setImageResource(R.drawable.im_nothing_found)
+                                        stub.visibility = View.VISIBLE
+                                    }
                                 } else {
                                     // Сервер отклонил наш запрос с ошибкой
-                                    Log.d(
-                                        "iTunesAPIService",
-                                        response.errorBody()?.string() ?: ""
-                                    )
+                                    recycler.visibility = View.GONE
+
+                                    stubPrimaryText.setText(R.string.search_screen_stub_connection_problem_primary_text)
+                                    stubSecondaryText.setText(R.string.search_screen_stub_connection_problem_secondary_text)
+                                    stubImage.setImageResource(R.drawable.im_connection_problem)
+                                    stub.visibility = View.VISIBLE
                                 }
                             }
 
