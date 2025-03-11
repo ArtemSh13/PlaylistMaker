@@ -66,15 +66,17 @@
             android:layout_gravity="center" />
         <TextView
             android:id="@+id/stub_primary_text"
-            android:layout_width="wrap_content"
+            android:layout_width="312dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
             style="@style/search_screen_stub_text" />
         <TextView
             android:id="@+id/stub_secondary_text"
-            android:layout_width="wrap_content"
+            android:layout_width="312dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
             style="@style/search_screen_stub_text" />
     </LinearLayout>
 
