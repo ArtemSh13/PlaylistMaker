@@ -78,6 +78,14 @@
             android:layout_gravity="center"
             android:layout_marginBottom="16dp"
             style="@style/search_screen_stub_text" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/search_screen_stub_update_button"
+            android:layout_width="91dp"
+            android:layout_height="36dp"
+            android:background="@drawable/search_screen_stub_update_button"
+            android:text="Обновить"
+            android:visibility="gone"
+            style="@style/search_screen_stub_update_button" />
     </LinearLayout>
 
 </LinearLayout>

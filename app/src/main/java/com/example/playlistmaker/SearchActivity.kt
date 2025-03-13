@@ -80,6 +80,7 @@ class SearchActivity : AppCompatActivity() {
         val stubPrimaryText = binding.stubPrimaryText
         val stubSecondaryText = binding.stubSecondaryText
         val stubImage = binding.stubImage
+        val stubUpdateButton = binding.searchScreenStubUpdateButton
 
         searchBar.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
@@ -92,12 +93,14 @@ class SearchActivity : AppCompatActivity() {
                                     // Наш запрос был удачным, получаем наши объекты
                                     if (response.body()!!.resultCount > 0) {
                                         stub.visibility = View.GONE
+                                        stubUpdateButton.visibility = View.GONE
 
                                         recycler.visibility = View.VISIBLE
                                         val responseTracks = response.body()?.results.orEmpty()
                                         recycler.adapter = TrackAdapter(tracks = responseTracks)
                                     } else {
                                         recycler.visibility = View.GONE
+                                        stubUpdateButton.visibility = View.GONE
 
                                         stubPrimaryText.setText(R.string.search_screen_stub_nothing_found_primary_text)
                                         stubSecondaryText.setText(R.string.search_screen_stub_nothing_found_secondary_text)
@@ -111,6 +114,7 @@ class SearchActivity : AppCompatActivity() {
                                     stubPrimaryText.setText(R.string.search_screen_stub_connection_problem_primary_text)
                                     stubSecondaryText.setText(R.string.search_screen_stub_connection_problem_secondary_text)
                                     stubImage.setImageResource(R.drawable.im_connection_problem)
+                                    stubUpdateButton.visibility = View.VISIBLE
                                     stub.visibility = View.VISIBLE
                                 }
                             }
