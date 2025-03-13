@@ -74,57 +74,60 @@ class SearchActivity : AppCompatActivity() {
         val recycler: RecyclerView = binding.trackList
         recycler.layoutManager = LinearLayoutManager(this)
 
-//        val nothingFoundStub = binding.stubNothingFound
-//        val connectionProblemStub = binding.stubConnectionProblem
         val stub = binding.stub
         val stubPrimaryText = binding.stubPrimaryText
         val stubSecondaryText = binding.stubSecondaryText
         val stubImage = binding.stubImage
         val stubUpdateButton = binding.searchScreenStubUpdateButton
+        val callbackiTunesAPIService = object : Callback<iTunesResponse>{
+            override fun onResponse(call: Call<iTunesResponse>, response: Response<iTunesResponse>) {
+                // Получили ответ от сервера
+                if (response.isSuccessful) {
+                    // Наш запрос был удачным, получаем наши объекты
+                    if (response.body()!!.resultCount > 0) {
+                        stub.visibility = View.GONE
+                        stubUpdateButton.visibility = View.GONE
+
+                        recycler.visibility = View.VISIBLE
+                        val responseTracks = response.body()?.results.orEmpty()
+                        recycler.adapter = TrackAdapter(tracks = responseTracks)
+                    } else {
+                        recycler.visibility = View.GONE
+                        stubUpdateButton.visibility = View.GONE
+
+                        stubPrimaryText.setText(R.string.search_screen_stub_nothing_found_primary_text)
+                        stubSecondaryText.setText(R.string.search_screen_stub_nothing_found_secondary_text)
+                        stubImage.setImageResource(R.drawable.im_nothing_found)
+                        stub.visibility = View.VISIBLE
+                    }
+                } else {
+                    // Сервер отклонил наш запрос с ошибкой
+                    recycler.visibility = View.GONE
+
+                    stubPrimaryText.setText(R.string.search_screen_stub_connection_problem_primary_text)
+                    stubSecondaryText.setText(R.string.search_screen_stub_connection_problem_secondary_text)
+                    stubImage.setImageResource(R.drawable.im_connection_problem)
+                    stubUpdateButton.visibility = View.VISIBLE
+                    stub.visibility = View.VISIBLE
+                }
+            }
+
+            override fun onFailure(call: Call<iTunesResponse>, t: Throwable) {
+                // Не смогли присоединиться к серверу
+                // Выводим ошибку в лог, что-то пошло не так
+                t.printStackTrace()
+            }
+        }
+
+        stubUpdateButton.setOnClickListener { iTunesAPIService.getSongsByTerm(searchBar.text.toString())
+            .enqueue(callbackiTunesAPIService)
+        }
 
         searchBar.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 iTunesAPIService.getSongsByTerm(searchBar.text.toString())
                     .enqueue(
-                        object : Callback<iTunesResponse>{
-                            override fun onResponse(call: Call<iTunesResponse>, response: Response<iTunesResponse>) {
-                                // Получили ответ от сервера
-                                if (response.isSuccessful) {
-                                    // Наш запрос был удачным, получаем наши объекты
-                                    if (response.body()!!.resultCount > 0) {
-                                        stub.visibility = View.GONE
-                                        stubUpdateButton.visibility = View.GONE
-
-                                        recycler.visibility = View.VISIBLE
-                                        val responseTracks = response.body()?.results.orEmpty()
-                                        recycler.adapter = TrackAdapter(tracks = responseTracks)
-                                    } else {
-                                        recycler.visibility = View.GONE
-                                        stubUpdateButton.visibility = View.GONE
-
-                                        stubPrimaryText.setText(R.string.search_screen_stub_nothing_found_primary_text)
-                                        stubSecondaryText.setText(R.string.search_screen_stub_nothing_found_secondary_text)
-                                        stubImage.setImageResource(R.drawable.im_nothing_found)
-                                        stub.visibility = View.VISIBLE
-                                    }
-                                } else {
-                                    // Сервер отклонил наш запрос с ошибкой
-                                    recycler.visibility = View.GONE
-
-                                    stubPrimaryText.setText(R.string.search_screen_stub_connection_problem_primary_text)
-                                    stubSecondaryText.setText(R.string.search_screen_stub_connection_problem_secondary_text)
-                                    stubImage.setImageResource(R.drawable.im_connection_problem)
-                                    stubUpdateButton.visibility = View.VISIBLE
-                                    stub.visibility = View.VISIBLE
-                                }
-                            }
-
-                            override fun onFailure(call: Call<iTunesResponse>, t: Throwable) {
-                                // Не смогли присоединиться к серверу
-                                // Выводим ошибку в лог, что-то пошло не так
-                                t.printStackTrace()
-                            }
-                        }
+                        callbackiTunesAPIService
                     )
                 true
             }
