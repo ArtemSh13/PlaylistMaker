@@ -2,4 +2,6 @@
 <resources>
     <integer name="search_screen_track_item_track_name_textFontWeight">400</integer>
     <integer name="search_screen_track_item_track_sub_desc_textFontWeight">400</integer>
+    <integer name="search_screen_stub_text_textFontWeight">400</integer>
+    <integer name="search_screen_stub_update_button_textFontWeight">500</integer>
 </resources>

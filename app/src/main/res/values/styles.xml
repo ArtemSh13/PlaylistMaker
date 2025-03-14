@@ -70,7 +70,7 @@
         <item name="android:textSize">@dimen/search_screen_stub_text_textSize</item>
         <item name="android:textColor">@color/search_screen_stub_fill_color</item>
         <item name="android:fontFamily">@font/ys_display_medium</item>
-        <item name="android:textFontWeight">@dimen/search_screen_stub_text_textFontWeight</item>
+        <item name="android:textFontWeight">@integer/search_screen_stub_text_textFontWeight</item>
         <item name="android:textAlignment">center</item>
     </style>
 
@@ -80,7 +80,7 @@
         <item name="android:textAllCaps">false</item>
         <item name="android:fontFamily">@font/ys_display_medium</item>
         <item name="android:letterSpacing">@dimen/search_screen_stub_update_button_letterSpacing</item>
-        <item name="android:textFontWeight">@dimen/search_screen_stub_update_button_textFontWeight</item>
+        <item name="android:textFontWeight">@integer/search_screen_stub_update_button_textFontWeight</item>
         <item name="android:layout_gravity">center_horizontal</item>
         <item name="android:padding">@dimen/search_screen_stub_update_button_padding</item>
     </style>

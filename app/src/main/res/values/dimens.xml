@@ -74,9 +74,7 @@
     <dimen name="search_screen_stub_update_button_layout_width">91dp</dimen>
     <dimen name="search_screen_stub_update_button_layout_height">36dp</dimen>
     <dimen name="search_screen_stub_text_textSize">19sp</dimen>
-    <dimen name="search_screen_stub_text_textFontWeight">400</dimen>
     <dimen name="search_screen_stub_update_button_textSize">14sp</dimen>
     <dimen name="search_screen_stub_update_button_letterSpacing">0</dimen>
-    <dimen name="search_screen_stub_update_button_textFontWeight">500</dimen>
     <dimen name="search_screen_stub_update_button_padding">0dp</dimen>
 </resources>
