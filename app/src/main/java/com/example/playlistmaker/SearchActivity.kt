@@ -43,15 +43,11 @@ class SearchActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        val searchToolbar: Toolbar = binding.searchToolbar
-        searchToolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back)
-        searchToolbar.setNavigationOnClickListener { finish() }
+        binding.searchToolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back)
+        binding.searchToolbar.setNavigationOnClickListener { finish() }
 
-        val searchBar: EditText = binding.searchBar
-
-        val clearSearchBarButton = binding.clearSearchBarButton
-        clearSearchBarButton.setOnClickListener {
-            searchBar.text.clear()
+        binding.clearSearchBarButton.setOnClickListener {
+            binding.searchBar.text.clear()
             val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(view.windowToken, 0)
         }
@@ -62,53 +58,47 @@ class SearchActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                clearSearchBarButton.isVisible = !s.isNullOrEmpty()
+                binding.clearSearchBarButton.isVisible = !s.isNullOrEmpty()
             }
 
             override fun afterTextChanged(p0: Editable?) {
-                searchBarInputTextValue = searchBar.text.toString()
+                searchBarInputTextValue = binding.searchBar.text.toString()
             }
         }
-        searchBar.addTextChangedListener(searchBarTextWatcher)
+        binding.searchBar.addTextChangedListener(searchBarTextWatcher)
 
-        val recycler: RecyclerView = binding.trackList
-        recycler.layoutManager = LinearLayoutManager(this)
+        binding.trackList.layoutManager = LinearLayoutManager(this)
 
-        val stub = binding.stub
-        val stubPrimaryText = binding.stubPrimaryText
-        val stubSecondaryText = binding.stubSecondaryText
-        val stubImage = binding.stubImage
-        val stubUpdateButton = binding.searchScreenStubUpdateButton
         val callbackiTunesAPIService = object : Callback<iTunesResponse>{
             override fun onResponse(call: Call<iTunesResponse>, response: Response<iTunesResponse>) {
                 // Получили ответ от сервера
                 if (response.isSuccessful) {
                     // Наш запрос был удачным, получаем наши объекты
                     if (response.body()!!.resultCount > 0) {
-                        stub.visibility = View.GONE
-                        stubUpdateButton.visibility = View.GONE
+                        binding.stub.visibility = View.GONE
+                        binding.searchScreenStubUpdateButton.visibility = View.GONE
 
-                        recycler.visibility = View.VISIBLE
+                        binding.trackList.visibility = View.VISIBLE
                         val responseTracks = response.body()?.results.orEmpty()
-                        recycler.adapter = TrackAdapter(tracks = responseTracks)
+                        binding.trackList.adapter = TrackAdapter(tracks = responseTracks)
                     } else {
-                        recycler.visibility = View.GONE
-                        stubUpdateButton.visibility = View.GONE
+                        binding.trackList.visibility = View.GONE
+                        binding.searchScreenStubUpdateButton.visibility = View.GONE
 
-                        stubPrimaryText.setText(R.string.search_screen_stub_nothing_found_primary_text)
-                        stubSecondaryText.setText(R.string.search_screen_stub_nothing_found_secondary_text)
-                        stubImage.setImageResource(R.drawable.im_nothing_found)
-                        stub.visibility = View.VISIBLE
+                        binding.stubPrimaryText.setText(R.string.search_screen_stub_nothing_found_primary_text)
+                        binding.stubSecondaryText.setText(R.string.search_screen_stub_nothing_found_secondary_text)
+                        binding.stubImage.setImageResource(R.drawable.im_nothing_found)
+                        binding.stub.visibility = View.VISIBLE
                     }
                 } else {
                     // Сервер отклонил наш запрос с ошибкой
-                    recycler.visibility = View.GONE
+                    binding.trackList.visibility = View.GONE
 
-                    stubPrimaryText.setText(R.string.search_screen_stub_connection_problem_primary_text)
-                    stubSecondaryText.setText(R.string.search_screen_stub_connection_problem_secondary_text)
-                    stubImage.setImageResource(R.drawable.im_connection_problem)
-                    stubUpdateButton.visibility = View.VISIBLE
-                    stub.visibility = View.VISIBLE
+                    binding.stubPrimaryText.setText(R.string.search_screen_stub_connection_problem_primary_text)
+                    binding.stubSecondaryText.setText(R.string.search_screen_stub_connection_problem_secondary_text)
+                    binding.stubImage.setImageResource(R.drawable.im_connection_problem)
+                    binding.searchScreenStubUpdateButton.visibility = View.VISIBLE
+                    binding.stub.visibility = View.VISIBLE
                 }
             }
 
@@ -119,13 +109,13 @@ class SearchActivity : AppCompatActivity() {
             }
         }
 
-        stubUpdateButton.setOnClickListener { iTunesAPIService.getSongsByTerm(searchBar.text.toString())
+        binding.searchScreenStubUpdateButton.setOnClickListener { iTunesAPIService.getSongsByTerm(binding.searchBar.text.toString())
             .enqueue(callbackiTunesAPIService)
         }
 
-        searchBar.setOnEditorActionListener { _, actionId, _ ->
+        binding.searchBar.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                iTunesAPIService.getSongsByTerm(searchBar.text.toString())
+                iTunesAPIService.getSongsByTerm(binding.searchBar.text.toString())
                     .enqueue(
                         callbackiTunesAPIService
                     )
