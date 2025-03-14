@@ -32,9 +32,11 @@ class SearchActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        // Toolbar
         binding.searchToolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back)
         binding.searchToolbar.setNavigationOnClickListener { finish() }
 
+        // Searchbar
         binding.clearSearchBarButton.setOnClickListener {
             binding.searchBar.text.clear()
             val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -56,45 +58,56 @@ class SearchActivity : AppCompatActivity() {
         }
         binding.searchBar.addTextChangedListener(searchBarTextWatcher)
 
+        // Track list
         binding.trackList.layoutManager = LinearLayoutManager(this)
+
+        fun showTrackList() {
+            binding.stub.visibility = View.GONE
+            binding.searchScreenStubUpdateButton.visibility = View.GONE
+
+            binding.trackList.visibility = View.VISIBLE
+        }
+
+        fun showNothingFoundStub() {
+            binding.trackList.visibility = View.GONE
+            binding.searchScreenStubUpdateButton.visibility = View.GONE
+
+            binding.stubPrimaryText.setText(R.string.search_screen_stub_nothing_found_primary_text)
+            binding.stubSecondaryText.setText(R.string.search_screen_stub_nothing_found_secondary_text)
+            binding.stubImage.setImageResource(R.drawable.im_nothing_found)
+
+            binding.stub.visibility = View.VISIBLE
+        }
+
+        fun showConnectionProblemStub() {
+            binding.trackList.visibility = View.GONE
+
+            binding.stubPrimaryText.setText(R.string.search_screen_stub_connection_problem_primary_text)
+            binding.stubSecondaryText.setText(R.string.search_screen_stub_connection_problem_secondary_text)
+            binding.stubImage.setImageResource(R.drawable.im_connection_problem)
+            binding.searchScreenStubUpdateButton.visibility = View.VISIBLE
+
+            binding.stub.visibility = View.VISIBLE
+        }
 
         val callbackiTunesAPIService = object : Callback<iTunesResponse>{
             override fun onResponse(call: Call<iTunesResponse>, response: Response<iTunesResponse>) {
-                // Получили ответ от сервера
                 if (response.isSuccessful) {
-                    // Наш запрос был удачным, получаем наши объекты
                     if (response.body()!!.resultCount > 0) {
-                        binding.stub.visibility = View.GONE
-                        binding.searchScreenStubUpdateButton.visibility = View.GONE
-
-                        binding.trackList.visibility = View.VISIBLE
+                        showTrackList()
                         val responseTracks = response.body()?.results.orEmpty()
                         binding.trackList.adapter = TrackAdapter(tracks = responseTracks)
                     } else {
-                        binding.trackList.visibility = View.GONE
-                        binding.searchScreenStubUpdateButton.visibility = View.GONE
-
-                        binding.stubPrimaryText.setText(R.string.search_screen_stub_nothing_found_primary_text)
-                        binding.stubSecondaryText.setText(R.string.search_screen_stub_nothing_found_secondary_text)
-                        binding.stubImage.setImageResource(R.drawable.im_nothing_found)
-                        binding.stub.visibility = View.VISIBLE
+                        showNothingFoundStub()
                     }
                 } else {
-                    // Сервер отклонил наш запрос с ошибкой
-                    binding.trackList.visibility = View.GONE
-
-                    binding.stubPrimaryText.setText(R.string.search_screen_stub_connection_problem_primary_text)
-                    binding.stubSecondaryText.setText(R.string.search_screen_stub_connection_problem_secondary_text)
-                    binding.stubImage.setImageResource(R.drawable.im_connection_problem)
-                    binding.searchScreenStubUpdateButton.visibility = View.VISIBLE
-                    binding.stub.visibility = View.VISIBLE
+                    showConnectionProblemStub()
                 }
             }
 
             override fun onFailure(call: Call<iTunesResponse>, t: Throwable) {
-                // Не смогли присоединиться к серверу
-                // Выводим ошибку в лог, что-то пошло не так
                 t.printStackTrace()
+                showConnectionProblemStub()
             }
         }
 
