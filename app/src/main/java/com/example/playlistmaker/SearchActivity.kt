@@ -24,11 +24,6 @@ import retrofit2.create
 
 class SearchActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySearchBinding
-    private val retrofit = Retrofit.Builder()
-        .baseUrl("https://itunes.apple.com/")
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-    private val iTunesAPIService = retrofit.create<iTunesAPI>()
 
     private var searchBarInputTextValue = INPUT_TEXT_DEF
 
@@ -109,13 +104,13 @@ class SearchActivity : AppCompatActivity() {
             }
         }
 
-        binding.searchScreenStubUpdateButton.setOnClickListener { iTunesAPIService.getSongsByTerm(binding.searchBar.text.toString())
+        binding.searchScreenStubUpdateButton.setOnClickListener { iTunesAPIService.instance.getSongsByTerm(binding.searchBar.text.toString())
             .enqueue(callbackiTunesAPIService)
         }
 
         binding.searchBar.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                iTunesAPIService.getSongsByTerm(binding.searchBar.text.toString())
+                iTunesAPIService.instance.getSongsByTerm(binding.searchBar.text.toString())
                     .enqueue(
                         callbackiTunesAPIService
                     )
