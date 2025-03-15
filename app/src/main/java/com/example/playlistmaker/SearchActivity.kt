@@ -32,35 +32,6 @@ class SearchActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        // Toolbar
-        binding.searchToolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back)
-        binding.searchToolbar.setNavigationOnClickListener { finish() }
-
-        // Searchbar
-        binding.clearSearchBarButton.setOnClickListener {
-            binding.searchBar.text.clear()
-            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(view.windowToken, 0)
-        }
-
-        val searchBarTextWatcher = object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                //TODO("Not yet implemented")
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                binding.clearSearchBarButton.isVisible = !s.isNullOrEmpty()
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-                searchBarInputTextValue = binding.searchBar.text.toString()
-            }
-        }
-        binding.searchBar.addTextChangedListener(searchBarTextWatcher)
-
-        // Track list
-        binding.trackList.layoutManager = LinearLayoutManager(this)
-
         fun showTrackList() {
             binding.stub.visibility = View.GONE
             binding.searchScreenStubUpdateButton.visibility = View.GONE
@@ -89,6 +60,37 @@ class SearchActivity : AppCompatActivity() {
 
             binding.stub.visibility = View.VISIBLE
         }
+
+        // Toolbar
+        binding.searchToolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back)
+        binding.searchToolbar.setNavigationOnClickListener { finish() }
+
+        // Searchbar
+        binding.clearSearchBarButton.setOnClickListener {
+            binding.searchBar.text.clear()
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(view.windowToken, 0)
+            binding.trackList.adapter = TrackAdapter(tracks = emptyList())
+            showTrackList()
+        }
+
+        val searchBarTextWatcher = object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                //TODO("Not yet implemented")
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                binding.clearSearchBarButton.isVisible = !s.isNullOrEmpty()
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                searchBarInputTextValue = binding.searchBar.text.toString()
+            }
+        }
+        binding.searchBar.addTextChangedListener(searchBarTextWatcher)
+
+        // Track list
+        binding.trackList.layoutManager = LinearLayoutManager(this)
 
         val callbackiTunesAPIService = object : Callback<iTunesResponse>{
             override fun onResponse(call: Call<iTunesResponse>, response: Response<iTunesResponse>) {
