@@ -47,7 +47,7 @@ class SearchActivity : AppCompatActivity() {
 
             binding.stubPrimaryText.setText(R.string.search_screen_stub_nothing_found_primary_text)
             binding.stubSecondaryText.setText(R.string.search_screen_stub_nothing_found_secondary_text)
-            binding.stubImage.setImageResource(R.drawable.im_nothing_found)
+            binding.stubImage.setImageResource(R.drawable.img_nothing_found)
 
             binding.stub.visibility = View.VISIBLE
         }
@@ -57,7 +57,7 @@ class SearchActivity : AppCompatActivity() {
 
             binding.stubPrimaryText.setText(R.string.search_screen_stub_connection_problem_primary_text)
             binding.stubSecondaryText.setText(R.string.search_screen_stub_connection_problem_secondary_text)
-            binding.stubImage.setImageResource(R.drawable.im_connection_problem)
+            binding.stubImage.setImageResource(R.drawable.img_connection_problem)
             binding.searchScreenStubUpdateButton.visibility = View.VISIBLE
 
             binding.stub.visibility = View.VISIBLE
