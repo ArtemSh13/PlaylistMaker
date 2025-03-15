@@ -39,6 +39,8 @@ class SearchActivity : AppCompatActivity() {
             binding.trackList.visibility = View.VISIBLE
         }
 
+        fun clearTrackList() { binding.trackList.adapter = TrackAdapter(tracks = emptyList()) }
+
         fun showNothingFoundStub() {
             binding.trackList.visibility = View.GONE
             binding.searchScreenStubUpdateButton.visibility = View.GONE
@@ -70,7 +72,7 @@ class SearchActivity : AppCompatActivity() {
             binding.searchBar.text.clear()
             val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(view.windowToken, 0)
-            binding.trackList.adapter = TrackAdapter(tracks = emptyList())
+            clearTrackList()
             showTrackList()
         }
 
@@ -81,6 +83,10 @@ class SearchActivity : AppCompatActivity() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 binding.clearSearchBarButton.isVisible = !s.isNullOrEmpty()
+                if (s.isNullOrEmpty()) {
+                    clearTrackList()
+                    showTrackList()
+                }
             }
 
             override fun afterTextChanged(p0: Editable?) {
