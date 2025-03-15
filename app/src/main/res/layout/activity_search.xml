@@ -27,7 +27,9 @@
             style="@style/search_screen_search_bar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/search_screen_search_bar_layout_height"
-            android:layout_marginHorizontal="@dimen/search_screen_search_bar_layout_marginHorizontal" />
+            android:layout_marginHorizontal="@dimen/search_screen_search_bar_layout_marginHorizontal"
+            android:imeOptions="actionDone"
+            android:singleLine="true" />
 
         <ImageView
             android:id="@+id/clear_search_bar_button"
@@ -45,6 +47,45 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/track_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:id="@+id/stub"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone" >
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/search_screen_space_between_bar_n_stub" />
+        <ImageView
+            android:id="@+id/stub_image"
+            android:layout_width="@dimen/search_screen_stub_image_size"
+            android:layout_height="@dimen/search_screen_stub_image_size"
+            android:layout_gravity="center" />
+        <TextView
+            android:id="@+id/stub_primary_text"
+            android:layout_width="@dimen/search_screen_stub_text_width"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/search_screen_stub_text_layout_marginBottom"
+            style="@style/search_screen_stub_text" />
+        <TextView
+            android:id="@+id/stub_secondary_text"
+            android:layout_width="@dimen/search_screen_stub_text_width"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/search_screen_stub_text_layout_marginBottom"
+            style="@style/search_screen_stub_text" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/search_screen_stub_update_button"
+            android:layout_width="@dimen/search_screen_stub_update_button_layout_width"
+            android:layout_height="@dimen/search_screen_stub_update_button_layout_height"
+            android:background="@drawable/search_screen_stub_update_button"
+            android:text="@string/search_screen_stub_update_button_text"
+            android:visibility="gone"
+            style="@style/search_screen_stub_update_button" />
+    </LinearLayout>
 
 </LinearLayout>
