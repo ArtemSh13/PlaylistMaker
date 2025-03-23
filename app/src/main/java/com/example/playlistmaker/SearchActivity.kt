@@ -63,6 +63,21 @@ class SearchActivity : AppCompatActivity() {
             binding.stub.visibility = View.VISIBLE
         }
 
+        fun showSearchHistory() {
+            binding.trackList.visibility = View.GONE
+            binding.stub.visibility = View.GONE
+
+            binding.searchHistoryTrackList.adapter = TrackAdapter(tracks = TracksMock.mockTrackList)
+            binding.searchHistory.visibility = View.VISIBLE
+        }
+
+        fun hideSearchHistory() {
+            clearTrackList()
+            binding.trackList.visibility = View.VISIBLE
+            binding.stub.visibility = View.GONE
+            binding.searchHistory.visibility = View.GONE
+        }
+
         // Toolbar
         binding.searchToolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back)
         binding.searchToolbar.setNavigationOnClickListener { finish() }
@@ -94,6 +109,14 @@ class SearchActivity : AppCompatActivity() {
             }
         }
         binding.searchBar.addTextChangedListener(searchBarTextWatcher)
+        binding.searchHistoryTrackList.layoutManager = LinearLayoutManager(this)
+        binding.searchBar.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus && binding.searchBar.text.isEmpty()) {
+                showSearchHistory()
+            } else {
+                hideSearchHistory()
+            }
+        }
 
         // Track list
         binding.trackList.layoutManager = LinearLayoutManager(this)
