@@ -31,6 +31,7 @@ class SearchActivity : AppCompatActivity() {
         binding = ActivitySearchBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        TracksHistoryKeeper.activity = this
 
         fun showTrackList() {
             binding.stub.visibility = View.GONE
@@ -64,11 +65,13 @@ class SearchActivity : AppCompatActivity() {
         }
 
         fun showSearchHistory() {
-            binding.trackList.visibility = View.GONE
-            binding.stub.visibility = View.GONE
-
-            binding.searchHistoryTrackList.adapter = TrackAdapter(tracks = TracksMock.mockTrackList)
-            binding.searchHistory.visibility = View.VISIBLE
+            val tracksHistory = TracksHistoryKeeper.getTracksHistory()
+            if (tracksHistory.isNotEmpty()) {
+                binding.trackList.visibility = View.GONE
+                binding.stub.visibility = View.GONE
+                binding.searchHistoryTrackList.adapter = TrackAdapter(tracks = tracksHistory)
+                binding.searchHistory.visibility = View.VISIBLE
+            }
         }
 
         fun hideSearchHistory() {
