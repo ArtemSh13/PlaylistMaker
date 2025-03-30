@@ -65,7 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/clear_search_history_button"
+            android:id="@+id/clear_tracks_history_button"
             android:layout_width="@dimen/search_screen_clear_search_history_button_layout_width"
             android:layout_height="@dimen/search_screen_clear_search_history_button_layout_height"
             android:text="@string/search_screen_clear_search_history_button_label" />

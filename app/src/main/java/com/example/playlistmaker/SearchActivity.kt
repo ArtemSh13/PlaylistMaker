@@ -31,7 +31,7 @@ class SearchActivity : AppCompatActivity() {
         binding = ActivitySearchBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        TracksHistoryKeeper.activity = this
+        TracksHistoryKeeper.initSharedPreferencesFromContext(this)
 
         fun showTrackList() {
             binding.stub.visibility = View.GONE
@@ -64,7 +64,7 @@ class SearchActivity : AppCompatActivity() {
             binding.stub.visibility = View.VISIBLE
         }
 
-        fun showSearchHistory() {
+        fun showTracksHistory() {
             val tracksHistory = TracksHistoryKeeper.getTracksHistory()
             if (tracksHistory.isNotEmpty()) {
                 binding.trackList.visibility = View.GONE
@@ -74,7 +74,7 @@ class SearchActivity : AppCompatActivity() {
             }
         }
 
-        fun hideSearchHistory() {
+        fun hideTracksHistory() {
             clearTrackList()
             binding.trackList.visibility = View.VISIBLE
             binding.stub.visibility = View.GONE
@@ -115,9 +115,9 @@ class SearchActivity : AppCompatActivity() {
         binding.searchHistoryTrackList.layoutManager = LinearLayoutManager(this)
         binding.searchBar.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus && binding.searchBar.text.isEmpty()) {
-                showSearchHistory()
+                showTracksHistory()
             } else {
-                hideSearchHistory()
+                hideTracksHistory()
             }
         }
 
@@ -147,6 +147,11 @@ class SearchActivity : AppCompatActivity() {
 
         binding.searchScreenStubUpdateButton.setOnClickListener { iTunesAPIService.instance.getSongsByTerm(binding.searchBar.text.toString())
             .enqueue(callbackiTunesAPIService)
+        }
+
+        binding.clearTracksHistoryButton.setOnClickListener {
+            hideTracksHistory()
+            TracksHistoryKeeper.clearTracksHistory()
         }
 
         binding.searchBar.setOnEditorActionListener { _, actionId, _ ->
