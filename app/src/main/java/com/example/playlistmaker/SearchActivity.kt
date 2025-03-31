@@ -29,8 +29,7 @@ class SearchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySearchBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
         SharedPreferencesKeeper.initSharedPreferencesFromContext(this)
 
         fun showTrackList() {
@@ -89,7 +88,7 @@ class SearchActivity : AppCompatActivity() {
         binding.clearSearchBarButton.setOnClickListener {
             binding.searchBar.text.clear()
             val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(view.windowToken, 0)
+            imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
             clearTrackList()
             showTrackList()
         }

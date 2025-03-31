@@ -12,13 +12,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //enableEdgeToEdge()
-        //setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
-        //val searchButton = findViewById<Button>(R.id.search_button)
-        val searchButton = binding.searchButton
         val searchButtonClickListener: View.OnClickListener = View.OnClickListener {
             startActivity(
                 Intent(
@@ -27,20 +23,16 @@ class MainActivity : AppCompatActivity() {
                 )
             )
         }
-        searchButton.setOnClickListener(searchButtonClickListener)
+        binding.searchButton.setOnClickListener(searchButtonClickListener)
 
-        //val libraryButton = findViewById<Button>(R.id.library_button)
-        val libraryButton = binding.libraryButton
         val libraryButtonClickListener: View.OnClickListener = View.OnClickListener {
             startActivity(Intent(this, LibraryActivity::class.java))
         }
-        libraryButton.setOnClickListener(libraryButtonClickListener)
+        binding.libraryButton.setOnClickListener(libraryButtonClickListener)
 
-        //val settingsButton = findViewById<Button>(R.id.settings_button)
-        val settingsButton = binding.settingsButton
         val settingsButtonClickListener: View.OnClickListener = View.OnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
         }
-        settingsButton.setOnClickListener(settingsButtonClickListener)
+        binding.settingsButton.setOnClickListener(settingsButtonClickListener)
     }
 }

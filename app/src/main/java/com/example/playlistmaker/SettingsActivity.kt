@@ -15,25 +15,20 @@ class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySettingsBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
         SharedPreferencesKeeper.initSharedPreferencesFromContext(this)
 
         binding.darkTheme.isChecked = SharedPreferencesKeeper.getDarkThemeSwitchState()
         binding.darkTheme.setOnClickListener {SharedPreferencesKeeper.setDarkThemeSwitchState(binding.darkTheme.isChecked)}
 
-        val settingsToolbar: Toolbar = binding.settingsToolbar
-        settingsToolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back)
-        settingsToolbar.setNavigationOnClickListener { finish() }
+        binding.settingsToolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back)
+        binding.settingsToolbar.setNavigationOnClickListener { finish() }
 
-        val shareButton = binding.share
-        shareButton.setOnClickListener {onShareButtonClick()}
+        binding.share.setOnClickListener {onShareButtonClick()}
 
-        val supportButton = binding.support
-        supportButton.setOnClickListener {onSupportButtonClick()}
+        binding.support.setOnClickListener {onSupportButtonClick()}
 
-        val userAgreementButton = binding.userAgreement
-        userAgreementButton.setOnClickListener {onUserAgreementClick()}
+        binding.userAgreement.setOnClickListener {onUserAgreementClick()}
 
     }
 
