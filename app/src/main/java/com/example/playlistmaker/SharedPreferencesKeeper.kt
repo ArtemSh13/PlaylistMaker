@@ -15,12 +15,6 @@ object SharedPreferencesKeeper {
     private lateinit var sharedPreferences: SharedPreferences
 
     fun initSharedPreferencesFromContext(context: Context) {
-//        if (!::sharedPreferences.isInitialized) {
-//            this.sharedPreferences = context.getSharedPreferences(
-//                this.SHARED_PREF_FILE_NAME,
-//                MODE_PRIVATE
-//            )
-//        }
         this.sharedPreferences = context.getSharedPreferences(
             this.SHARED_PREF_FILE_NAME,
             MODE_PRIVATE
