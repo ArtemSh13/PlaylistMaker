@@ -6,18 +6,37 @@ import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-object TracksHistoryKeeper {
-    private const val TRACKS_HISTORY_SHARED_PREF_FILE_NAME = "playlist_maker_shared_prefs"
+object SharedPreferencesKeeper {
+    private const val SHARED_PREF_FILE_NAME = "playlist_maker_shared_prefs"
+    private const val DARK_THEME_SWITCH_KEY = "dark_theme_switch"
     private const val TRACKS_HISTORY_SHARED_PREF_KEY = "tracks_history"
     private const val TRACKS_HISTORY_MAX_LENGTH = 10
 
     private lateinit var sharedPreferences: SharedPreferences
 
     fun initSharedPreferencesFromContext(context: Context) {
+//        if (!::sharedPreferences.isInitialized) {
+//            this.sharedPreferences = context.getSharedPreferences(
+//                this.SHARED_PREF_FILE_NAME,
+//                MODE_PRIVATE
+//            )
+//        }
         this.sharedPreferences = context.getSharedPreferences(
-            this.TRACKS_HISTORY_SHARED_PREF_FILE_NAME,
+            this.SHARED_PREF_FILE_NAME,
             MODE_PRIVATE
         )
+    }
+
+    fun getDarkThemeSwitchState(): Boolean {
+        return this.sharedPreferences.getBoolean(
+            this.DARK_THEME_SWITCH_KEY, false
+        )
+    }
+
+    fun setDarkThemeSwitchState(state: Boolean) {
+        this.sharedPreferences.edit()
+            .putBoolean(this.DARK_THEME_SWITCH_KEY, state)
+            .apply()
     }
 
     fun getTracksHistory(): ArrayList<Track> {

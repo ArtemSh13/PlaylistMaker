@@ -19,6 +19,7 @@
         app:titleMarginTop="@dimen/settings_screen_toolbar_titleMarginTop" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/dark_theme"
         style="@style/settings_screen_item"
         android:layout_width="match_parent"
         android:text="@string/settings_screen_item_dark_theme"

@@ -31,7 +31,7 @@ class SearchActivity : AppCompatActivity() {
         binding = ActivitySearchBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        TracksHistoryKeeper.initSharedPreferencesFromContext(this)
+        SharedPreferencesKeeper.initSharedPreferencesFromContext(this)
 
         fun showTrackList() {
             binding.stub.visibility = View.GONE
@@ -65,7 +65,7 @@ class SearchActivity : AppCompatActivity() {
         }
 
         fun showTracksHistory() {
-            val tracksHistory = TracksHistoryKeeper.getTracksHistory()
+            val tracksHistory = SharedPreferencesKeeper.getTracksHistory()
             if (tracksHistory.isNotEmpty()) {
                 binding.trackList.visibility = View.GONE
                 binding.stub.visibility = View.GONE
@@ -151,7 +151,7 @@ class SearchActivity : AppCompatActivity() {
 
         binding.clearTracksHistoryButton.setOnClickListener {
             hideTracksHistory()
-            TracksHistoryKeeper.clearTracksHistory()
+            SharedPreferencesKeeper.clearTracksHistory()
         }
 
         binding.searchBar.setOnEditorActionListener { _, actionId, _ ->

@@ -12,7 +12,7 @@ class TrackAdapter(private val tracks: List<Track>) : RecyclerView.Adapter<Track
 
     override fun onBindViewHolder(holder: TrackViewHolder, position: Int) {
         holder.bind(tracks[position])
-        holder.itemView.setOnClickListener { TracksHistoryKeeper.recordTrackInHistory(tracks[position]) }
+        holder.itemView.setOnClickListener { SharedPreferencesKeeper.recordTrackInHistory(tracks[position]) }
     }
 
     override fun getItemCount() = tracks.size

@@ -17,6 +17,10 @@ class SettingsActivity : AppCompatActivity() {
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        SharedPreferencesKeeper.initSharedPreferencesFromContext(this)
+
+        binding.darkTheme.isChecked = SharedPreferencesKeeper.getDarkThemeSwitchState()
+        binding.darkTheme.setOnClickListener {SharedPreferencesKeeper.setDarkThemeSwitchState(binding.darkTheme.isChecked)}
 
         val settingsToolbar: Toolbar = binding.settingsToolbar
         settingsToolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back)
