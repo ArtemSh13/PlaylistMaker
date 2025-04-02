@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--  Components design  -->
+    <!--  Typography  -->
+    <dimen name="ys_typography_letterSpacing">0</dimen>
+
     <!--Main Screen-->
     <dimen name="main_screen_button_layout_height">0dp</dimen>
     <dimen name="main_screen_button_layout_weight">236</dimen>
