@@ -6,17 +6,10 @@
     android:background="@color/settings_screen_background_color"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/settings_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/settings_screen_toolbar_layout_height"
-        android:layout_marginStart="@dimen/settings_screen_toolbar_layout_marginStart"
-        android:layout_marginBottom="@dimen/settings_screen_toolbar_layout_marginBottom"
-        app:title="@string/settings_screen_title"
-        app:titleTextAppearance="@style/settings_screen_title"
-        app:titleTextColor="@color/settings_screen_title_color"
-        app:titleMarginStart="@dimen/settings_screen_toolbar_titleMarginStart"
-        app:titleMarginTop="@dimen/settings_screen_toolbar_titleMarginTop" />
+        style="@style/ys_toolbar"
+        app:title="@string/settings_screen_title" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/dark_theme"

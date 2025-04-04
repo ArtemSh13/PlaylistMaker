@@ -56,6 +56,16 @@
         <item name="android:textSize">11sp</item>
     </style>
 
+    <!--  Toolbar  -->
+    <style name="ys_toolbar" parent="Base.Theme.PlaylistMaker">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="titleTextAppearance">@style/ys_medium_22</item>
+        <item name="titleMarginStart">12dp</item>
+        <item name="titleMarginTop">14dp</item>
+    </style>
+
+
     <style name="main_screen_title">
         <item name="android:textSize">22sp</item>
         <item name="android:textColor">@color/main_screen_title_color</item>

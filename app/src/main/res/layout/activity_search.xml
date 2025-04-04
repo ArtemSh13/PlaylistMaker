@@ -6,17 +6,10 @@
     android:background="@color/search_screen_background_color"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/search_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/search_screen_title_layout_height"
-        android:layout_marginStart="@dimen/search_screen_title_layout_marginStart"
-        android:layout_marginBottom="@dimen/search_screen_title_layout_marginBottom"
-        app:title="@string/search_screen_title"
-        app:titleMarginStart="@dimen/search_screen_title_text_layout_marginStart"
-        app:titleMarginTop="@dimen/search_screen_title_text_layout_marginTop"
-        app:titleTextAppearance="@style/search_screen_title"
-        app:titleTextColor="@color/search_screen_title_color" />
+        style="@style/ys_toolbar"
+        app:title="@string/search_screen_title" />
 
     <FrameLayout
         android:layout_width="match_parent"
