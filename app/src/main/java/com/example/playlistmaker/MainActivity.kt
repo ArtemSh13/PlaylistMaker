@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.playlistmaker.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -14,6 +15,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
+        SharedPreferencesKeeper.initSharedPreferencesFromContext(this)
+        AppCompatDelegate.setDefaultNightMode(
+            if (SharedPreferencesKeeper.getDarkThemeSwitchState()) AppCompatDelegate.MODE_NIGHT_YES
+            else AppCompatDelegate.MODE_NIGHT_NO
+        )
         setContentView(binding.root)
 
         val searchButtonClickListener: View.OnClickListener = View.OnClickListener {

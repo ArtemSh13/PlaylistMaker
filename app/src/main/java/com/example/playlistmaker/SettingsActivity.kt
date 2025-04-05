@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.playlistmaker.databinding.ActivitySettingsBinding
 
 class SettingsActivity : AppCompatActivity() {
@@ -18,7 +19,13 @@ class SettingsActivity : AppCompatActivity() {
         SharedPreferencesKeeper.initSharedPreferencesFromContext(this)
 
         binding.darkTheme.isChecked = SharedPreferencesKeeper.getDarkThemeSwitchState()
-        binding.darkTheme.setOnClickListener {SharedPreferencesKeeper.setDarkThemeSwitchState(binding.darkTheme.isChecked)}
+        binding.darkTheme.setOnClickListener {
+            SharedPreferencesKeeper.setDarkThemeSwitchState(binding.darkTheme.isChecked)
+            AppCompatDelegate.setDefaultNightMode(
+                if (binding.darkTheme.isChecked) AppCompatDelegate.MODE_NIGHT_YES
+                else AppCompatDelegate.MODE_NIGHT_NO
+            )
+        }
 
         binding.settingsToolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back)
         binding.settingsToolbar.setNavigationOnClickListener { finish() }
