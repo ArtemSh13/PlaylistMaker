@@ -12,6 +12,7 @@
         style="@style/ys_toolbar"
         app:title="@string/search_screen_title" />
 
+    <!-- Search Bar + Clear Button -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="52dp"
@@ -35,14 +36,16 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/search_screen_space_between_bar_n_track_list" />
 
+    <!-- Track Search Results -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/track_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="visible" />
 
+    <!-- Track History -->
     <LinearLayout
-        android:id="@+id/search_history"
+        android:id="@+id/track_history"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -52,7 +55,7 @@
             android:layout_height="@dimen/search_screen_search_history_title_layout_height"
             android:text="@string/search_screen_search_history_title" />
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/search_history_track_list"
+            android:id="@+id/track_history_track_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
         <androidx.appcompat.widget.AppCompatButton

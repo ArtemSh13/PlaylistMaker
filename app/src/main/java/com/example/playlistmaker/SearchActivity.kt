@@ -70,8 +70,8 @@ class SearchActivity : AppCompatActivity() {
             if (tracksHistory.isNotEmpty()) {
                 binding.trackList.visibility = View.GONE
                 binding.stub.visibility = View.GONE
-                binding.searchHistoryTrackList.adapter = TrackAdapter(tracks = tracksHistory)
-                binding.searchHistory.visibility = View.VISIBLE
+                binding.trackHistoryTrackList.adapter = TrackAdapter(tracks = tracksHistory)
+                binding.trackHistory.visibility = View.VISIBLE
             }
         }
 
@@ -79,7 +79,7 @@ class SearchActivity : AppCompatActivity() {
             clearTrackList()
             binding.trackList.visibility = View.VISIBLE
             binding.stub.visibility = View.GONE
-            binding.searchHistory.visibility = View.GONE
+            binding.trackHistory.visibility = View.GONE
         }
 
         // Toolbar
@@ -113,7 +113,7 @@ class SearchActivity : AppCompatActivity() {
             }
         }
         binding.searchBar.addTextChangedListener(searchBarTextWatcher)
-        binding.searchHistoryTrackList.layoutManager = LinearLayoutManager(this)
+        binding.trackHistoryTrackList.layoutManager = LinearLayoutManager(this)
         binding.searchBar.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus && binding.searchBar.text.isEmpty()) {
                 showTracksHistory()
