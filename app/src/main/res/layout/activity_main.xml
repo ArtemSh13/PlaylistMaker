@@ -8,7 +8,7 @@
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/main_toolbar"
-        style="@style/ys_toolbar"
+        style="@style/PanelHeader.PlaylistMaker"
         app:title="@string/main_screen_title"
         app:titleTextColor="@color/yp_white"/>
 

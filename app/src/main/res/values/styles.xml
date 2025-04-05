@@ -57,7 +57,7 @@
     </style>
 
     <!--  Toolbar  -->
-    <style name="ys_toolbar" parent="Base.Theme.PlaylistMaker">
+    <style name="PanelHeader.PlaylistMaker" parent="Base.Theme.PlaylistMaker">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">56dp</item>
         <item name="titleTextAppearance">@style/ys_medium_22</item>
@@ -66,7 +66,7 @@
     </style>
     
     <!-- Buttons -->
-    <style name="SmallButton" parent="Base.Theme.PlaylistMaker">
+    <style name="SmallButton.PlaylistMaker" parent="Base.Theme.PlaylistMaker">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">36dp</item>
         <item name="android:background">@drawable/small_button_background</item>
@@ -104,7 +104,7 @@
         <item name="android:visibility">gone</item>
     </style>
     
-    <style name="Title.TrackHistory.SearchScreen" parent="Base.Theme.PlaylistMaker">
+    <style name="Title.TrackHistory.SearchScreen.PlaylistMaker" parent="Base.Theme.PlaylistMaker">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">22dp</item>
         <item name="android:textAppearance">@style/ys_medium_19</item>
