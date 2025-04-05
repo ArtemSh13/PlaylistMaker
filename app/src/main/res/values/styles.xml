@@ -64,7 +64,17 @@
         <item name="titleMarginStart">12dp</item>
         <item name="titleMarginTop">14dp</item>
     </style>
+    
+    <!-- Buttons -->
+    <style name="SmallButton" parent="Base.Theme.PlaylistMaker">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:background">@drawable/small_button_background</item>
+        <item name="android:textAppearance">@style/ys_medium_14</item>
+        <item name="android:textColor">@color/yp_white</item>
+    </style>
 
+    <!-- Specific Styles -->
     <!-- Search Screen -->
     <!-- Search Bar -->
     <style name="SearchBar.PlaylistMaker" parent="Base.Theme.PlaylistMaker">
@@ -93,7 +103,15 @@
         <item name="android:focusable">true</item>
         <item name="android:visibility">gone</item>
     </style>
+    
+    <style name="Title.TrackHistory.SearchScreen" parent="Base.Theme.PlaylistMaker">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">22dp</item>
+        <item name="android:textAppearance">@style/ys_medium_19</item>
+        <item name="android:textAlignment">center</item>
+    </style>
 
+    <!-- Not refactored styles -->
     <style name="main_screen_title">
         <item name="android:textSize">22sp</item>
         <item name="android:textColor">@color/main_screen_title_color</item>

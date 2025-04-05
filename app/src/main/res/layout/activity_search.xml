@@ -50,18 +50,23 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:visibility="gone" >
-        <TextView
+        <Space
             android:layout_width="match_parent"
-            android:layout_height="@dimen/search_screen_search_history_title_layout_height"
+            android:layout_height="26dp" />
+        <TextView
+            style="@style/Title.TrackHistory.SearchScreen"
             android:text="@string/search_screen_search_history_title" />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/track_history_track_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="24dp" />
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/clear_tracks_history_button"
-            android:layout_width="@dimen/search_screen_clear_search_history_button_layout_width"
-            android:layout_height="@dimen/search_screen_clear_search_history_button_layout_height"
+            style="@style/SmallButton"
+            android:layout_gravity="center"
             android:text="@string/search_screen_clear_search_history_button_label" />
     </LinearLayout>
 
@@ -93,14 +98,14 @@
             android:layout_gravity="center"
             android:layout_marginBottom="@dimen/search_screen_stub_text_layout_marginBottom"
             style="@style/search_screen_stub_text" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="24dp" />
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/search_screen_stub_update_button"
-            android:layout_width="@dimen/search_screen_stub_update_button_layout_width"
-            android:layout_height="@dimen/search_screen_stub_update_button_layout_height"
-            android:background="@drawable/search_screen_stub_update_button"
-            android:text="@string/search_screen_stub_update_button_text"
-            android:visibility="gone"
-            style="@style/search_screen_stub_update_button" />
+            style="@style/SmallButton"
+            android:layout_gravity="center"
+            android:text="@string/search_screen_stub_update_button_text" />
     </LinearLayout>
 
 </LinearLayout>
