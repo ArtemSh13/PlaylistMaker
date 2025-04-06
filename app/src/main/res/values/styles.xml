@@ -60,7 +60,9 @@
     <style name="PanelHeader.PlaylistMaker" parent="Base.Theme.PlaylistMaker">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">56dp</item>
+        <item name="navigationIconTint">?attr/colorOnPrimary</item>
         <item name="titleTextAppearance">@style/ys_medium_22</item>
+        <item name="titleTextColor">?attr/colorOnPrimary</item>
         <item name="titleMarginStart">12dp</item>
         <item name="titleMarginTop">14dp</item>
     </style>
@@ -86,7 +88,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">19dp</item>
         <item name="android:textAppearance">@style/ys_regular_16</item>
-        <item name="android:textColor">@color/yp_black</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>
     </style>
@@ -96,7 +98,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">13dp</item>
         <item name="android:textAppearance">@style/ys_regular_11</item>
-        <item name="android:textColor">@color/yp_text_gray</item>
+        <item name="android:textColor">?attr/colorSecondary</item>
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>
     </style>
@@ -113,6 +115,7 @@
     <style name="LineAndIcon.Lists.PlaylistMaker" parent="BaseItem.Lists.PlaylistMaker">
         <item name="android:paddingStart">16dp</item>
         <item name="android:textAppearance">@style/ys_regular_16</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
         <item name="android:gravity">center_vertical</item>
     </style>
 
@@ -125,6 +128,7 @@
     <style name="OneLine.Lists.PlaylistMaker" parent="BaseItem.Lists.PlaylistMaker">
         <item name="android:textAppearance">@style/ys_medium_19</item>
         <item name="android:textAlignment">center</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
         <item name="android:gravity">center</item>
     </style>
 
@@ -143,7 +147,8 @@
         <item name="android:drawablePadding">8dp</item>
         <!-- Text -->
         <item name="android:textAppearance">@style/ys_regular_16</item>
-        <item name="android:textColorHint">@color/yp_text_gray</item>
+        <item name="android:textColor">@color/yp_black</item>
+        <item name="android:textColorHint">@color/Elements.SearchField.PlaylistMaker</item>
         <item name="android:hint">@string/search_screen_search_bar_hint</item>
         <item name="android:textCursorDrawable">@drawable/search_bar_cursor</item>
     </style>
@@ -163,7 +168,7 @@
         <item name="android:layout_height">36dp</item>
         <item name="android:background">@drawable/small_button_background</item>
         <item name="android:textAppearance">@style/ys_medium_14</item>
-        <item name="android:textColor">@color/yp_white</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
     </style>
 
     <!-- Big Button -->

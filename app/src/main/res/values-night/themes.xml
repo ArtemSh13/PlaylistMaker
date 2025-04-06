@@ -3,5 +3,6 @@
     <style name="Base.Theme.PlaylistMaker" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/yp_black</item>
         <item name="colorOnPrimary">@color/yp_white</item>
+        <item name="colorSecondary">@color/yp_white</item>
     </style>
 </resources>
