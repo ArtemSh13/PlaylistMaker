@@ -65,6 +65,62 @@
         <item name="titleMarginTop">14dp</item>
     </style>
 
+    <!-- Lists -->
+    <!-- Base Item Style -->
+    <style name="BaseItem.Lists.PlaylistMaker" parent="Base.Theme.PlaylistMaker">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">61dp</item>
+        <item name="android:paddingStart">13dp</item>
+        <item name="android:paddingEnd">12dp</item>
+    </style>
+
+    <!-- Base Icon Style -->
+    <style name="BaseIcon.Lists.PlaylistMaker" parent="Base.Theme.PlaylistMaker">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:layout_weight">45</item>
+    </style>
+
+    <!-- Base Title Style -->
+    <style name="BaseTitle.Lists.PlaylistMaker" parent="Base.Theme.PlaylistMaker">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">19dp</item>
+        <item name="android:textAppearance">@style/ys_regular_16</item>
+        <item name="android:textColor">@color/yp_black</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <!-- Base Subtitle Style -->
+    <style name="BaseSubtitle.Lists.PlaylistMaker" parent="Base.Theme.PlaylistMaker">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">13dp</item>
+        <item name="android:textAppearance">@style/ys_regular_11</item>
+        <item name="android:textColor">@color/yp_text_gray</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <!-- Base Secondary Icon -->
+    <style name="BaseSecondaryIcon.Lists.PlaylistMaker" parent="Base.Theme.PlaylistMaker">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">24dp</item>
+        <item name="android:layout_weight">24</item>
+        <item name="android:layout_gravity">center_vertical|end</item>
+    </style>
+
+    <!-- Line and Icon -->
+    <style name="LineAndIcon.Lists.PlaylistMaker" parent="BaseItem.Lists.PlaylistMaker">
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:textAppearance">@style/ys_regular_16</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <!-- Two Lines, Image and Icon -->
+    <style name="TwoLinesImageAndIcon.Lists.PlaylistMaker" parent="BaseItem.Lists.PlaylistMaker">
+        <item name="android:paddingVertical">8dp</item>
+    </style>
+
     <!-- Search Field -->
     <style name="SearchField.PlaylistMaker" parent="Base.Theme.PlaylistMaker">
         <item name="android:layout_width">match_parent</item>
@@ -114,17 +170,6 @@
         <item name="iconGravity">textStart</item>
         <item name="iconEndPadding">8dp</item>
         <item name="iconTint">@color/yp_black</item>
-    </style>
-
-    <!-- Lists -->
-    <!-- Line and Icon -->
-    <style name="LineAndIcon.Lists.PlaylistMaker" parent="Base.Theme.PlaylistMaker">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">61dp</item>
-        <item name="android:paddingStart">16dp</item>
-        <item name="android:paddingEnd">12dp</item>
-        <item name="android:textAppearance">@style/ys_regular_16</item>
-        <item name="android:gravity">center_vertical</item>
     </style>
 
     <!-- Specific Styles -->
