@@ -88,6 +88,17 @@
         <item name="iconTint">@color/yp_black</item>
     </style>
 
+    <!-- Lists -->
+    <!-- Line and Icon -->
+    <style name="LineAndIcon.Lists.PlaylistMaker" parent="Base.Theme.PlaylistMaker">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">61dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:textAppearance">@style/ys_regular_16</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
     <!-- Specific Styles -->
     <!-- Search Screen -->
     <!-- Search Bar -->
