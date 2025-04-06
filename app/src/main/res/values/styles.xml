@@ -64,10 +64,38 @@
         <item name="titleMarginStart">12dp</item>
         <item name="titleMarginTop">14dp</item>
     </style>
+
+    <!-- Search Field -->
+    <style name="SearchField.PlaylistMaker" parent="Base.Theme.PlaylistMaker">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:background">@drawable/search_bar_background</item>
+        <!-- Behaviour -->
+        <item name="android:inputType">text</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:imeOptions">actionDone</item>
+        <!-- Icon -->
+        <item name="android:drawableStart">@drawable/ic_search_bar</item>
+        <item name="android:drawablePadding">8dp</item>
+        <!-- Text -->
+        <item name="android:textAppearance">@style/ys_regular_16</item>
+        <item name="android:textColorHint">@color/yp_text_gray</item>
+        <item name="android:hint">@string/search_screen_search_bar_hint</item>
+        <item name="android:textCursorDrawable">@drawable/search_bar_cursor</item>
+    </style>
+
+    <style name="ClearButton.SearchField.PlaylistMaker" parent="Base.Theme.PlaylistMaker">
+        <item name="android:layout_width">14dp</item>
+        <item name="android:layout_height">14dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:visibility">gone</item>
+    </style>
     
     <!-- Buttons -->
     <!-- Small Button -->
-    <style name="SmallButton.PlaylistMaker" parent="Base.Theme.PlaylistMaker">
+    <style name="SmallButton.Buttons.PlaylistMaker" parent="Base.Theme.PlaylistMaker">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">36dp</item>
         <item name="android:background">@drawable/small_button_background</item>
@@ -76,7 +104,7 @@
     </style>
 
     <!-- Big Button -->
-    <style name="BigButton.PlaylistMaker" parent="Base.Theme.PlaylistMaker">
+    <style name="BigButton.Buttons.PlaylistMaker" parent="Base.Theme.PlaylistMaker">
         <item name="android:layout_width">328dp</item>
         <item name="android:layout_height">220dp</item>
         <item name="backgroundTint">@color/yp_white</item>
@@ -101,34 +129,6 @@
 
     <!-- Specific Styles -->
     <!-- Search Screen -->
-    <!-- Search Bar -->
-    <style name="SearchBar.PlaylistMaker" parent="Base.Theme.PlaylistMaker">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">36dp</item>
-        <item name="android:background">@drawable/search_bar_background</item>
-        <!-- Behaviour -->
-        <item name="android:inputType">text</item>
-        <item name="android:singleLine">true</item>
-        <item name="android:maxLines">1</item>
-        <item name="android:imeOptions">actionDone</item>
-        <!-- Icon -->
-        <item name="android:drawableStart">@drawable/ic_search_bar</item>
-        <item name="android:drawablePadding">8dp</item>
-        <!-- Text -->
-        <item name="android:textAppearance">@style/ys_regular_16</item>
-        <item name="android:textColorHint">@color/yp_text_gray</item>
-        <item name="android:hint">@string/search_screen_search_bar_hint</item>
-        <item name="android:textCursorDrawable">@drawable/search_bar_cursor</item>
-    </style>
-
-    <style name="ClearButton.SearchBar.PlaylistMaker" parent="Base.Theme.PlaylistMaker">
-        <item name="android:layout_width">14dp</item>
-        <item name="android:layout_height">14dp</item>
-        <item name="android:clickable">true</item>
-        <item name="android:focusable">true</item>
-        <item name="android:visibility">gone</item>
-    </style>
-    
     <style name="Title.TrackHistory.SearchScreen.PlaylistMaker" parent="Base.Theme.PlaylistMaker">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">22dp</item>
