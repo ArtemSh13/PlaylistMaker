@@ -118,6 +118,11 @@ class SearchActivity : AppCompatActivity() {
 
             override fun afterTextChanged(p0: Editable?) {
                 searchBarInputTextValue = binding.searchBar.text.toString()
+                if (binding.searchBar.text.isEmpty()) {
+                    showTracksHistory()
+                } else {
+                    hideTracksHistory()
+                }
             }
         }
         binding.searchBar.addTextChangedListener(searchBarTextWatcher)
@@ -164,7 +169,7 @@ class SearchActivity : AppCompatActivity() {
         }
 
         binding.searchBar.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
+            if (actionId == EditorInfo.IME_ACTION_DONE && binding.searchBar.text.isNotEmpty()) {
                 iTunesAPIService.instance.getSongsByTerm(binding.searchBar.text.toString())
                     .enqueue(
                         callbackiTunesAPIService
