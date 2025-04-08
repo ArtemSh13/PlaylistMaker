@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#000000</color>
-    <color name="white">#FFFFFF</color>
-    <color name="main_screen_title_color">#FFFFFF</color>
-    <color name="main_screen_background_color">#1A1B22</color>
-    <color name="main_screen_button_color">#FFFFFF</color>
-    <color name="main_screen_button_text_color">#1A1B22</color>
-    <color name="settings_screen_background_color">#000000</color>
-    <color name="settings_screen_title_color">#FFFFFF</color>
-    <color name="settings_screen_item_text_color">#FFFFFF</color>
-    <color name="settings_screen_item_icon_color">#FFFFFF</color>
-    <color name="search_screen_background_color">#1A1B22</color>
-    <color name="search_screen_title_color">#FFFFFF</color>
-    <color name="search_screen_search_bar_background">#FFFFFF</color>
-    <color name="search_screen_search_bar_textColorHint">#1A1B22</color>
-    <color name="search_screen_track_item_track_name_color">#FFFFFF</color>
-    <color name="search_screen_track_item_track_sub_desc_color">#FFFFFF</color>
-    <color name="search_screen_stub_fill_color">#FFFFFF</color>
-    <color name="search_screen_stub_button_text_color">#1A1B22</color>
+    <color name="Background.MainScreen.PlaylistMaker">@color/yp_black</color>
+    <color name="Background.SearchField.PlaylistMaker">@color/yp_white</color>
+    <color name="Elements.SearchField.PlaylistMaker">@color/yp_black</color>
 </resources>

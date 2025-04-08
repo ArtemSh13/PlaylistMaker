@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--  Components design  -->
+    <!--  Typography  -->
+    <dimen name="ys_typography_letterSpacing">0</dimen>
+
     <!--Main Screen-->
     <dimen name="main_screen_button_layout_height">0dp</dimen>
     <dimen name="main_screen_button_layout_weight">236</dimen>
@@ -77,4 +81,7 @@
     <dimen name="search_screen_stub_update_button_textSize">14sp</dimen>
     <dimen name="search_screen_stub_update_button_letterSpacing">0</dimen>
     <dimen name="search_screen_stub_update_button_padding">0dp</dimen>
+    <dimen name="search_screen_search_history_title_layout_height">52dp</dimen>
+    <dimen name="search_screen_clear_search_history_button_layout_width">148dp</dimen>
+    <dimen name="search_screen_clear_search_history_button_layout_height">36dp</dimen>
 </resources>

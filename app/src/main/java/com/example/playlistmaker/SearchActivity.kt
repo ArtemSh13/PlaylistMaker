@@ -7,8 +7,12 @@ import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
+import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.playlistmaker.databinding.ActivitySearchBinding
 import retrofit2.Call
@@ -28,9 +32,15 @@ class SearchActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         binding = ActivitySearchBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
+            val statusBar = insets.getInsets(WindowInsetsCompat.Type.statusBars())
+            view.updatePadding(top = statusBar.top)
+            insets
+        }
+        setContentView(binding.root)
+        SharedPreferencesKeeper.initSharedPreferencesFromContext(this)
 
         fun showTrackList() {
             binding.stub.visibility = View.GONE
@@ -47,7 +57,7 @@ class SearchActivity : AppCompatActivity() {
 
             binding.stubPrimaryText.setText(R.string.search_screen_stub_nothing_found_primary_text)
             binding.stubSecondaryText.setText(R.string.search_screen_stub_nothing_found_secondary_text)
-            binding.stubImage.setImageResource(R.drawable.im_nothing_found)
+            binding.stubImage.setImageResource(R.drawable.img_nothing_found)
 
             binding.stub.visibility = View.VISIBLE
         }
@@ -57,10 +67,27 @@ class SearchActivity : AppCompatActivity() {
 
             binding.stubPrimaryText.setText(R.string.search_screen_stub_connection_problem_primary_text)
             binding.stubSecondaryText.setText(R.string.search_screen_stub_connection_problem_secondary_text)
-            binding.stubImage.setImageResource(R.drawable.im_connection_problem)
+            binding.stubImage.setImageResource(R.drawable.img_connection_problem)
             binding.searchScreenStubUpdateButton.visibility = View.VISIBLE
 
             binding.stub.visibility = View.VISIBLE
+        }
+
+        fun showTracksHistory() {
+            val tracksHistory = SharedPreferencesKeeper.getTracksHistory()
+            if (tracksHistory.isNotEmpty()) {
+                binding.trackList.visibility = View.GONE
+                binding.stub.visibility = View.GONE
+                binding.trackHistoryTrackList.adapter = TrackAdapter(tracks = tracksHistory)
+                binding.trackHistory.visibility = View.VISIBLE
+            }
+        }
+
+        fun hideTracksHistory() {
+            clearTrackList()
+            binding.trackList.visibility = View.VISIBLE
+            binding.stub.visibility = View.GONE
+            binding.trackHistory.visibility = View.GONE
         }
 
         // Toolbar
@@ -71,7 +98,7 @@ class SearchActivity : AppCompatActivity() {
         binding.clearSearchBarButton.setOnClickListener {
             binding.searchBar.text.clear()
             val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(view.windowToken, 0)
+            imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
             clearTrackList()
             showTrackList()
         }
@@ -91,9 +118,22 @@ class SearchActivity : AppCompatActivity() {
 
             override fun afterTextChanged(p0: Editable?) {
                 searchBarInputTextValue = binding.searchBar.text.toString()
+                if (binding.searchBar.text.isEmpty()) {
+                    showTracksHistory()
+                } else {
+                    hideTracksHistory()
+                }
             }
         }
         binding.searchBar.addTextChangedListener(searchBarTextWatcher)
+        binding.trackHistoryTrackList.layoutManager = LinearLayoutManager(this)
+        binding.searchBar.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus && binding.searchBar.text.isEmpty()) {
+                showTracksHistory()
+            } else {
+                hideTracksHistory()
+            }
+        }
 
         // Track list
         binding.trackList.layoutManager = LinearLayoutManager(this)
@@ -123,8 +163,13 @@ class SearchActivity : AppCompatActivity() {
             .enqueue(callbackiTunesAPIService)
         }
 
+        binding.clearTracksHistoryButton.setOnClickListener {
+            hideTracksHistory()
+            SharedPreferencesKeeper.clearTracksHistory()
+        }
+
         binding.searchBar.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
+            if (actionId == EditorInfo.IME_ACTION_DONE && binding.searchBar.text.isNotEmpty()) {
                 iTunesAPIService.instance.getSongsByTerm(binding.searchBar.text.toString())
                     .enqueue(
                         callbackiTunesAPIService

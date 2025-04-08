@@ -3,7 +3,12 @@ package com.example.playlistmaker
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import com.example.playlistmaker.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -11,14 +16,20 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //enableEdgeToEdge()
-        //setContentView(R.layout.activity_main)
+        enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        SharedPreferencesKeeper.initSharedPreferencesFromContext(this)
+        AppCompatDelegate.setDefaultNightMode(
+            if (SharedPreferencesKeeper.getDarkThemeSwitchState()) AppCompatDelegate.MODE_NIGHT_YES
+            else AppCompatDelegate.MODE_NIGHT_NO
+        )
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
+            val statusBar = insets.getInsets(WindowInsetsCompat.Type.statusBars())
+            view.updatePadding(top = statusBar.top)
+            insets
+        }
+        setContentView(binding.root)
 
-        //val searchButton = findViewById<Button>(R.id.search_button)
-        val searchButton = binding.searchButton
         val searchButtonClickListener: View.OnClickListener = View.OnClickListener {
             startActivity(
                 Intent(
@@ -27,20 +38,16 @@ class MainActivity : AppCompatActivity() {
                 )
             )
         }
-        searchButton.setOnClickListener(searchButtonClickListener)
+        binding.searchButton.setOnClickListener(searchButtonClickListener)
 
-        //val libraryButton = findViewById<Button>(R.id.library_button)
-        val libraryButton = binding.libraryButton
         val libraryButtonClickListener: View.OnClickListener = View.OnClickListener {
             startActivity(Intent(this, LibraryActivity::class.java))
         }
-        libraryButton.setOnClickListener(libraryButtonClickListener)
+        binding.libraryButton.setOnClickListener(libraryButtonClickListener)
 
-        //val settingsButton = findViewById<Button>(R.id.settings_button)
-        val settingsButton = binding.settingsButton
         val settingsButtonClickListener: View.OnClickListener = View.OnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
         }
-        settingsButton.setOnClickListener(settingsButtonClickListener)
+        binding.settingsButton.setOnClickListener(settingsButtonClickListener)
     }
 }

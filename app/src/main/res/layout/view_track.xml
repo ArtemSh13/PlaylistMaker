@@ -1,64 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/search_screen_track_item_general_height"
-    android:orientation="horizontal"
-    android:layout_marginStart="@dimen/search_screen_track_item_general_margin_start"
-    android:layout_marginEnd="@dimen/search_screen_track_item_general_margin_end" >
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/TwoLinesImageAndIcon.Lists.PlaylistMaker"
+    android:orientation="horizontal">
+
     <ImageView
         android:id="@+id/track_artwork"
-        android:layout_width="@dimen/search_screen_track_item_track_artwork_layout_width"
-        android:layout_weight="@dimen/search_screen_track_item_track_artwork_layout_weight"
-        android:layout_height="@dimen/search_screen_track_item_track_artwork_layout_height"
-        android:layout_margin="@dimen/search_screen_track_item_track_artwork_layout_margin"
-        android:src="@mipmap/ic_launcher" />
+        style="@style/BaseIcon.Lists.PlaylistMaker"
+        android:src="@drawable/ic_artwork_placeholder"
+        tools:src="@drawable/ic_launcher_background" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="8" />
+
     <LinearLayout
-        android:layout_width="@dimen/search_screen_track_item_track_desc_layout_width"
-        android:layout_weight="@dimen/search_screen_track_item_track_desc_layout_weight"
-        android:layout_height="@dimen/search_screen_track_item_track_desc_layout_height"
-        android:orientation="vertical"
-        android:layout_marginVertical="@dimen/search_screen_track_item_track_desc_layout_marginVertical" >
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="250"
+        android:orientation="vertical">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="6dp" />
+
         <TextView
             android:id="@+id/track_name"
-            style="@style/search_screen_track_item_track_name"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/search_screen_track_item_track_name_layout_height"
-            android:layout_marginBottom="@dimen/search_screen_track_item_track_name_layout_marginBottom" />
+            style="@style/BaseTitle.Lists.PlaylistMaker"
+            tools:text="Track" />
+
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/search_screen_track_item_track_sub_desc_layout_height"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/artist_name"
-                android:layout_width="wrap_content"
-                android:maxWidth="@dimen/search_screen_track_item_track_artist_maxWidth"
-                android:layout_height="match_parent"
-                android:maxLines="1"
-                android:ellipsize="end"
-                style="@style/search_screen_track_item_track_desc" />
+                style="@style/BaseSubtitle.Lists.PlaylistMaker"
+                android:maxWidth="190dp"
+                tools:text="Artist" />
+
             <ImageView
-                android:layout_width="@dimen/search_screen_track_item_track_sub_desc_middot_size"
-                android:layout_height="@dimen/search_screen_track_item_track_sub_desc_middot_size"
-                android:src="@drawable/ic_middot"
-                android:layout_margin="@dimen/search_screen_track_item_track_time_layout_margin" />
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:layout_gravity="center"
+                android:padding="5dp"
+                android:src="@drawable/ic_middot" />
+
             <TextView
                 android:id="@+id/track_time"
-                android:layout_width="wrap_content"
-                android:maxWidth="@dimen/search_screen_track_item_track_time_maxWidth"
-                android:layout_height="match_parent"
-                android:maxLines="1"
-                android:ellipsize="end"
-                style="@style/search_screen_track_item_track_desc" />
+                style="@style/BaseSubtitle.Lists.PlaylistMaker"
+                android:maxWidth="60dp"
+                tools:text="Duration" />
         </LinearLayout>
     </LinearLayout>
+
     <ImageView
-        android:src="@drawable/ic_arrow_forward"
-        android:layout_width="@dimen/search_screen_track_item_arrow_layout_width"
-        android:layout_weight="@dimen/search_screen_track_item_arrow_layout_weight"
-        android:layout_height="@dimen/search_screen_track_item_arrow_layout_height"
-        android:layout_margin="@dimen/search_screen_track_item_arrow_layout_margin"
-        android:layout_gravity="end|center_vertical" />
+        style="@style/BaseSecondaryIcon.Lists.PlaylistMaker"
+        android:src="@drawable/ic_arrow_forward" />
 </LinearLayout>

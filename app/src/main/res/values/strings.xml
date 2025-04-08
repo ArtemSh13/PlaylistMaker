@@ -21,4 +21,6 @@
     <string name="search_screen_stub_connection_problem_primary_text">Проблемы со связью</string>
     <string name="search_screen_stub_connection_problem_secondary_text">Загрузка не удалась. Проверьте подключение к интернету</string>
     <string name="search_screen_stub_update_button_text">Обновить</string>
+    <string name="search_screen_search_history_title">Вы искали</string>
+    <string name="search_screen_clear_search_history_button_label">Очистить историю</string>
 </resources>

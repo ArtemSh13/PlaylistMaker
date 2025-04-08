@@ -1,12 +1,14 @@
 package com.example.playlistmaker
 
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import com.example.playlistmaker.databinding.ActivitySettingsBinding
 
 class SettingsActivity : AppCompatActivity() {
@@ -14,22 +16,33 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         binding = ActivitySettingsBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
+            val statusBar = insets.getInsets(WindowInsetsCompat.Type.statusBars())
+            view.updatePadding(top = statusBar.top)
+            insets
+        }
+        SharedPreferencesKeeper.initSharedPreferencesFromContext(this)
 
-        val settingsToolbar: Toolbar = binding.settingsToolbar
-        settingsToolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back)
-        settingsToolbar.setNavigationOnClickListener { finish() }
+        binding.darkTheme.isChecked = SharedPreferencesKeeper.getDarkThemeSwitchState()
+        binding.darkTheme.setOnClickListener {
+            SharedPreferencesKeeper.setDarkThemeSwitchState(binding.darkTheme.isChecked)
+            AppCompatDelegate.setDefaultNightMode(
+                if (binding.darkTheme.isChecked) AppCompatDelegate.MODE_NIGHT_YES
+                else AppCompatDelegate.MODE_NIGHT_NO
+            )
+        }
 
-        val shareButton = binding.share
-        shareButton.setOnClickListener {onShareButtonClick()}
+        binding.settingsToolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back)
+        binding.settingsToolbar.setNavigationOnClickListener { finish() }
 
-        val supportButton = binding.support
-        supportButton.setOnClickListener {onSupportButtonClick()}
+        binding.share.setOnClickListener {onShareButtonClick()}
 
-        val userAgreementButton = binding.userAgreement
-        userAgreementButton.setOnClickListener {onUserAgreementClick()}
+        binding.support.setOnClickListener {onSupportButtonClick()}
+
+        binding.userAgreement.setOnClickListener {onUserAgreementClick()}
 
     }
 

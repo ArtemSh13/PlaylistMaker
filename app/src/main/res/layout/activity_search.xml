@@ -3,53 +3,74 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/search_screen_background_color"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="?attr/colorPrimary"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/search_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/search_screen_title_layout_height"
-        android:layout_marginStart="@dimen/search_screen_title_layout_marginStart"
-        android:layout_marginBottom="@dimen/search_screen_title_layout_marginBottom"
-        app:title="@string/search_screen_title"
-        app:titleMarginStart="@dimen/search_screen_title_text_layout_marginStart"
-        app:titleMarginTop="@dimen/search_screen_title_text_layout_marginTop"
-        app:titleTextAppearance="@style/search_screen_title"
-        app:titleTextColor="@color/search_screen_title_color" />
+        style="@style/PanelHeader.PlaylistMaker"
+        app:title="@string/search_screen_title" />
 
+    <!-- Search Bar + Clear Button -->
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="52dp"
+        android:layout_marginHorizontal="16dp" >
 
         <EditText
             android:id="@+id/search_bar"
-            style="@style/search_screen_search_bar"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/search_screen_search_bar_layout_height"
-            android:layout_marginHorizontal="@dimen/search_screen_search_bar_layout_marginHorizontal"
-            android:imeOptions="actionDone"
-            android:singleLine="true" />
+            style="@style/SearchField.PlaylistMaker"
+            android:layout_gravity="center" />
 
         <ImageView
             android:id="@+id/clear_search_bar_button"
-            style="@style/search_screen_search_bar_clear_button"
-            android:layout_gravity="end"
-            android:layout_marginHorizontal="@dimen/search_screen_clear_search_bar_button_layout_marginHorizontal"
-            android:layout_marginVertical="@dimen/search_screen_clear_search_bar_button_layout_marginVertical"
-            android:src="@drawable/ic_clear_button" />
+            style="@style/ClearButton.SearchField.PlaylistMaker"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="14dp"
+            android:src="@drawable/ic_clear_button"
+            tools:visibility="visible"/>
     </FrameLayout>
     
     <Space
         android:layout_width="match_parent"
-        android:layout_height="@dimen/search_screen_space_between_bar_n_track_list" />
+        android:layout_height="16dp" />
 
+    <!-- Track Search Results -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/track_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="visible" />
 
+    <!-- Track History -->
+    <LinearLayout
+        android:id="@+id/track_history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone" >
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp" />
+        <TextView
+            style="@style/OneLine.Lists.PlaylistMaker"
+            android:text="@string/search_screen_search_history_title" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/track_history_track_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="24dp" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/clear_tracks_history_button"
+            style="@style/SmallButton.Buttons.PlaylistMaker"
+            android:layout_gravity="center"
+            android:text="@string/search_screen_clear_search_history_button_label" />
+    </LinearLayout>
+
+    <!-- Stubs -->
     <LinearLayout
         android:id="@+id/stub"
         android:layout_width="match_parent"
@@ -58,7 +79,7 @@
         android:visibility="gone" >
         <Space
             android:layout_width="match_parent"
-            android:layout_height="@dimen/search_screen_space_between_bar_n_stub" />
+            android:layout_height="86dp" />
         <ImageView
             android:id="@+id/stub_image"
             android:layout_width="@dimen/search_screen_stub_image_size"
@@ -66,26 +87,18 @@
             android:layout_gravity="center" />
         <TextView
             android:id="@+id/stub_primary_text"
-            android:layout_width="@dimen/search_screen_stub_text_width"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/search_screen_stub_text_layout_marginBottom"
-            style="@style/search_screen_stub_text" />
+            style="@style/OneLine.Lists.PlaylistMaker" />
         <TextView
             android:id="@+id/stub_secondary_text"
-            android:layout_width="@dimen/search_screen_stub_text_width"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/search_screen_stub_text_layout_marginBottom"
-            style="@style/search_screen_stub_text" />
+            style="@style/OneLine.Lists.PlaylistMaker" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="24dp" />
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/search_screen_stub_update_button"
-            android:layout_width="@dimen/search_screen_stub_update_button_layout_width"
-            android:layout_height="@dimen/search_screen_stub_update_button_layout_height"
-            android:background="@drawable/search_screen_stub_update_button"
-            android:text="@string/search_screen_stub_update_button_text"
-            android:visibility="gone"
-            style="@style/search_screen_stub_update_button" />
+            style="@style/SmallButton.Buttons.PlaylistMaker"
+            android:layout_gravity="center"
+            android:text="@string/search_screen_stub_update_button_text" />
     </LinearLayout>
 
 </LinearLayout>
