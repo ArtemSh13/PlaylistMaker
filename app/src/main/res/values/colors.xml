@@ -16,4 +16,5 @@
     <color name="Background.MainScreen.PlaylistMaker">@color/yp_blue</color>
     <color name="Background.SearchField.PlaylistMaker">@color/yp_light_gray</color>
     <color name="Elements.SearchField.PlaylistMaker">@color/yp_text_gray</color>
+    <color name="BackgroundTint.SecondaryButton.AudioPlayerScreen.PlaylistMaker">#C6C6C8</color>
 </resources>

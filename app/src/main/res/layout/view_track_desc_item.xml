@@ -25,6 +25,6 @@
         app:layout_constraintTop_toTopOf="parent"
         android:gravity="center"
         android:textAppearance="@style/ys_regular_13"
-        android:textColor="@color/yp_black"
+        android:textColor="?attr/colorOnPrimary"
         tools:text="Track Desc Value" />
 </androidx.constraintlayout.widget.ConstraintLayout>
