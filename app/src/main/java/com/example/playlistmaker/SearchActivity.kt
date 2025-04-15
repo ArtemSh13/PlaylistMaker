@@ -1,6 +1,7 @@
 package com.example.playlistmaker
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -42,6 +43,15 @@ class SearchActivity : AppCompatActivity() {
         setContentView(binding.root)
         SharedPreferencesKeeper.initSharedPreferencesFromContext(this)
 
+        val onTrackClickCallback = {
+            startActivity(
+                Intent(
+                    this@SearchActivity,
+                    AudioPlayerActivity::class.java
+                )
+            )
+        }
+
         fun showTrackList() {
             binding.stub.visibility = View.GONE
             binding.searchScreenStubUpdateButton.visibility = View.GONE
@@ -49,7 +59,7 @@ class SearchActivity : AppCompatActivity() {
             binding.trackList.visibility = View.VISIBLE
         }
 
-        fun clearTrackList() { binding.trackList.adapter = TrackAdapter(tracks = emptyList()) }
+        fun clearTrackList() { binding.trackList.adapter = TrackAdapter(tracks = emptyList(), onTrackClick = { }) }
 
         fun showNothingFoundStub() {
             binding.trackList.visibility = View.GONE
@@ -78,7 +88,7 @@ class SearchActivity : AppCompatActivity() {
             if (tracksHistory.isNotEmpty()) {
                 binding.trackList.visibility = View.GONE
                 binding.stub.visibility = View.GONE
-                binding.trackHistoryTrackList.adapter = TrackAdapter(tracks = tracksHistory)
+                binding.trackHistoryTrackList.adapter = TrackAdapter(tracks = tracksHistory, onTrackClick = onTrackClickCallback)
                 binding.trackHistory.visibility = View.VISIBLE
             }
         }
@@ -144,7 +154,7 @@ class SearchActivity : AppCompatActivity() {
                     if (response.body()!!.resultCount > 0) {
                         showTrackList()
                         val responseTracks = response.body()?.results.orEmpty()
-                        binding.trackList.adapter = TrackAdapter(tracks = responseTracks)
+                        binding.trackList.adapter = TrackAdapter(tracks = responseTracks, onTrackClick = onTrackClickCallback)
                     } else {
                         showNothingFoundStub()
                     }
