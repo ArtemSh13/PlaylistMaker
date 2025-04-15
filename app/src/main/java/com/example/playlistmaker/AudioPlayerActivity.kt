@@ -51,7 +51,7 @@ class AudioPlayerActivity : AppCompatActivity() {
         binding.collectionName.trackDescValue.text = track.collectionName
 
         binding.releaseDate.trackDescKey.setText(R.string.ReleaseDate_AudioPlayerScreen_PlaylistMaker)
-        binding.releaseDate.trackDescValue.text = track.releaseDate.subSequence(0, 4)
+        binding.releaseDate.trackDescValue.text = track.releaseDate
 
         binding.primaryGenreName.trackDescKey.setText(R.string.PrimaryGenreName_AudioPlayerScreen_PlaylistMaker)
         binding.primaryGenreName.trackDescValue.text = track.primaryGenreName
