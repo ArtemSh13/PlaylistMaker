@@ -43,12 +43,13 @@ class SearchActivity : AppCompatActivity() {
         setContentView(binding.root)
         SharedPreferencesKeeper.initSharedPreferencesFromContext(this)
 
-        val onTrackClickCallback = {
+        val onTrackClickCallback = { track: Track ->
             startActivity(
                 Intent(
                     this@SearchActivity,
                     AudioPlayerActivity::class.java
                 )
+                    .putExtra("clickedTrack", track)
             )
         }
 
