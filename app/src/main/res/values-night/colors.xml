@@ -3,4 +3,5 @@
     <color name="Background.MainScreen.PlaylistMaker">@color/yp_black</color>
     <color name="Background.SearchField.PlaylistMaker">@color/yp_white</color>
     <color name="Elements.SearchField.PlaylistMaker">@color/yp_black</color>
+    <color name="BackgroundTint.SecondaryButton.AudioPlayerScreen.PlaylistMaker">#535459</color>
 </resources>

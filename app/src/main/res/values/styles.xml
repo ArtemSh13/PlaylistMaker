@@ -192,4 +192,34 @@
         <item name="android:textAppearance">@style/ys_medium_19</item>
         <item name="android:textAlignment">center</item>
     </style>
+
+    <!-- Audio Player Screen -->
+    <style name="PrimaryButton.AudioPlayerScreen.PlaylistMaker" parent="Base.Theme.PlaylistMaker">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:background">@drawable/background_primary_button</item>
+        <item name="android:backgroundTint">@null</item>
+    </style>
+
+    <style name="SecondaryButton.AudioPlayerScreen.PlaylistMaker" parent="Base.Theme.PlaylistMaker">
+        <item name="android:layout_width">51dp</item>
+        <item name="android:layout_height">51dp</item>
+        <item name="android:background">@drawable/background_secondary_button</item>
+        <item name="android:backgroundTint">@color/BackgroundTint.SecondaryButton.AudioPlayerScreen.PlaylistMaker</item>
+    </style>
+
+    <style name="TrackName.AudioPlayerScreen.PlaylistMaker" parent="Base.Theme.PlaylistMaker">
+        <item name="android:textAppearance">@style/ys_medium_22</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="SecondaryText.AudioPlayerScreen.PlaylistMaker" parent="Base.Theme.PlaylistMaker">
+        <item name="android:textAppearance">@style/ys_medium_14</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
 </resources>
