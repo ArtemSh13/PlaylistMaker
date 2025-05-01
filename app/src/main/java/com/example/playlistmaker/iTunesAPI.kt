@@ -6,5 +6,6 @@ import retrofit2.http.Query
 
 interface iTunesAPI {
     @GET("search")
-    fun getSongsByTerm(@Query("term") term: String) : Call<iTunesResponse>
+    fun getSongsByTerm(@Query("term") term: String,
+                       @Query("media") media: String) : Call<iTunesResponse>
 }

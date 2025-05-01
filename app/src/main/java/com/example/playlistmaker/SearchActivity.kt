@@ -170,7 +170,7 @@ class SearchActivity : AppCompatActivity() {
             }
         }
 
-        binding.searchScreenStubUpdateButton.setOnClickListener { iTunesAPIService.instance.getSongsByTerm(binding.searchBar.text.toString())
+        binding.searchScreenStubUpdateButton.setOnClickListener { iTunesAPIService.instance.getSongsByTerm(binding.searchBar.text.toString(), "music")
             .enqueue(callbackiTunesAPIService)
         }
 
@@ -181,7 +181,7 @@ class SearchActivity : AppCompatActivity() {
 
         binding.searchBar.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE && binding.searchBar.text.isNotEmpty()) {
-                iTunesAPIService.instance.getSongsByTerm(binding.searchBar.text.toString())
+                iTunesAPIService.instance.getSongsByTerm(binding.searchBar.text.toString(), "music")
                     .enqueue(
                         callbackiTunesAPIService
                     )
