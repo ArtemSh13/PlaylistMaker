@@ -1,5 +1,6 @@
 package com.example.playlistmaker
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +14,49 @@ import com.example.playlistmaker.databinding.ActivityAudioplayerBinding
 class AudioPlayerActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAudioplayerBinding
 
+    // Create a companion object to control MediaPlayer states
+    companion object {
+        private const val STATE_DEFAULT = 0
+        private const val STATE_PREPARED = 1
+        private const val STATE_PLAYING = 2
+        private const val STATE_PAUSED = 3
+    }
+
+    private var audioPlayerState = STATE_DEFAULT
+
+    private val mediaPlayer = MediaPlayer()
+
+    private fun prepareAudioPlayer(track: Track) {
+        this.mediaPlayer.setDataSource(track.previewUrl)
+        this.mediaPlayer.prepareAsync()
+        this.binding.playButton.isClickable = true
+        this.binding.playButton.setOnClickListener { this.playbackControl() }
+        this.mediaPlayer.setOnCompletionListener {
+            this.binding.playButton.setImageResource(R.drawable.ic_play)
+            this.audioPlayerState = STATE_PREPARED
+        }
+        this.audioPlayerState = STATE_PREPARED
+    }
+
+    private fun playAudioPlayer() {
+        this.binding.playButton.setImageResource(R.drawable.ic_pause)
+        this.mediaPlayer.start()
+        this.audioPlayerState = STATE_PLAYING
+    }
+
+    private fun pauseAudioPlayer() {
+        this.binding.playButton.setImageResource(R.drawable.ic_play)
+        this.mediaPlayer.pause()
+        this.audioPlayerState = STATE_PAUSED
+    }
+
+    private fun playbackControl() {
+        when(audioPlayerState) {
+            STATE_PREPARED, STATE_PAUSED -> this.playAudioPlayer()
+            STATE_PLAYING -> this.pauseAudioPlayer()
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -24,6 +68,7 @@ class AudioPlayerActivity : AppCompatActivity() {
         }
         setContentView(binding.root)
 
+        // Get the track from the previous activity
         val track = intent.getSerializableExtra("clickedTrack") as Track
 
         // Toolbar
@@ -43,7 +88,6 @@ class AudioPlayerActivity : AppCompatActivity() {
         binding.artistName.text = track.artistName
 
         // Track Description
-
         binding.trackTime.trackDescKey.setText(R.string.TrackTime_AudioPlayerScreen_PlaylistMaker)
         binding.trackTime.trackDescValue.text = track.trackTime
 
@@ -59,5 +103,17 @@ class AudioPlayerActivity : AppCompatActivity() {
         binding.country.trackDescKey.setText(R.string.Country_AudioPlayerScreen_PlaylistMaker)
         binding.country.trackDescValue.text = track.country
 
+        // MediaPlayer
+        this.prepareAudioPlayer(track)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        this.pauseAudioPlayer()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        this.mediaPlayer.release()
     }
 }
