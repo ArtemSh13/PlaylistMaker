@@ -34,13 +34,13 @@ class SearchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivitySearchBinding.inflate(layoutInflater)
-        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
+        this.binding = ActivitySearchBinding.inflate(layoutInflater)
+        ViewCompat.setOnApplyWindowInsetsListener(this.binding.root) { view, insets ->
             val statusBar = insets.getInsets(WindowInsetsCompat.Type.statusBars())
             view.updatePadding(top = statusBar.top)
             insets
         }
-        setContentView(binding.root)
+        setContentView(this.binding.root)
         SharedPreferencesKeeper.initSharedPreferencesFromContext(this)
 
         val onTrackClickCallback = { track: Track ->
@@ -54,62 +54,62 @@ class SearchActivity : AppCompatActivity() {
         }
 
         fun showTrackList() {
-            binding.stub.visibility = View.GONE
-            binding.searchScreenStubUpdateButton.visibility = View.GONE
+            this.binding.stub.visibility = View.GONE
+            this.binding.searchScreenStubUpdateButton.visibility = View.GONE
 
-            binding.trackList.visibility = View.VISIBLE
+            this.binding.trackList.visibility = View.VISIBLE
         }
 
-        fun clearTrackList() { binding.trackList.adapter = TrackAdapter(tracks = emptyList(), onTrackClick = { }) }
+        fun clearTrackList() { this.binding.trackList.adapter = TrackAdapter(tracks = emptyList(), onTrackClick = { }) }
 
         fun showNothingFoundStub() {
-            binding.trackList.visibility = View.GONE
-            binding.searchScreenStubUpdateButton.visibility = View.GONE
+            this.binding.trackList.visibility = View.GONE
+            this.binding.searchScreenStubUpdateButton.visibility = View.GONE
 
-            binding.stubPrimaryText.setText(R.string.search_screen_stub_nothing_found_primary_text)
-            binding.stubSecondaryText.setText(R.string.search_screen_stub_nothing_found_secondary_text)
-            binding.stubImage.setImageResource(R.drawable.img_nothing_found)
+            this.binding.stubPrimaryText.setText(R.string.search_screen_stub_nothing_found_primary_text)
+            this.binding.stubSecondaryText.setText(R.string.search_screen_stub_nothing_found_secondary_text)
+            this.binding.stubImage.setImageResource(R.drawable.img_nothing_found)
 
-            binding.stub.visibility = View.VISIBLE
+            this.binding.stub.visibility = View.VISIBLE
         }
 
         fun showConnectionProblemStub() {
-            binding.trackList.visibility = View.GONE
+            this.binding.trackList.visibility = View.GONE
 
-            binding.stubPrimaryText.setText(R.string.search_screen_stub_connection_problem_primary_text)
-            binding.stubSecondaryText.setText(R.string.search_screen_stub_connection_problem_secondary_text)
-            binding.stubImage.setImageResource(R.drawable.img_connection_problem)
-            binding.searchScreenStubUpdateButton.visibility = View.VISIBLE
+            this.binding.stubPrimaryText.setText(R.string.search_screen_stub_connection_problem_primary_text)
+            this.binding.stubSecondaryText.setText(R.string.search_screen_stub_connection_problem_secondary_text)
+            this.binding.stubImage.setImageResource(R.drawable.img_connection_problem)
+            this.binding.searchScreenStubUpdateButton.visibility = View.VISIBLE
 
-            binding.stub.visibility = View.VISIBLE
+            this.binding.stub.visibility = View.VISIBLE
         }
 
         fun showTracksHistory() {
             val tracksHistory = SharedPreferencesKeeper.getTracksHistory()
             if (tracksHistory.isNotEmpty()) {
-                binding.trackList.visibility = View.GONE
-                binding.stub.visibility = View.GONE
-                binding.trackHistoryTrackList.adapter = TrackAdapter(tracks = tracksHistory, onTrackClick = onTrackClickCallback)
-                binding.trackHistory.visibility = View.VISIBLE
+                this.binding.trackList.visibility = View.GONE
+                this.binding.stub.visibility = View.GONE
+                this.binding.trackHistoryTrackList.adapter = TrackAdapter(tracks = tracksHistory, onTrackClick = onTrackClickCallback)
+                this.binding.trackHistory.visibility = View.VISIBLE
             }
         }
 
         fun hideTracksHistory() {
             clearTrackList()
-            binding.trackList.visibility = View.VISIBLE
-            binding.stub.visibility = View.GONE
-            binding.trackHistory.visibility = View.GONE
+            this.binding.trackList.visibility = View.VISIBLE
+            this.binding.stub.visibility = View.GONE
+            this.binding.trackHistory.visibility = View.GONE
         }
 
         // Toolbar
-        binding.searchToolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back)
-        binding.searchToolbar.setNavigationOnClickListener { finish() }
+        this.binding.searchToolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back)
+        this.binding.searchToolbar.setNavigationOnClickListener { finish() }
 
         // Searchbar
-        binding.clearSearchBarButton.setOnClickListener {
-            binding.searchBar.text.clear()
+        this.binding.clearSearchBarButton.setOnClickListener {
+            this.binding.searchBar.text.clear()
             val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
+            imm.hideSoftInputFromWindow(this.binding.root.windowToken, 0)
             clearTrackList()
             showTrackList()
         }
@@ -136,9 +136,9 @@ class SearchActivity : AppCompatActivity() {
                 }
             }
         }
-        binding.searchBar.addTextChangedListener(searchBarTextWatcher)
-        binding.trackHistoryTrackList.layoutManager = LinearLayoutManager(this)
-        binding.searchBar.setOnFocusChangeListener { _, hasFocus ->
+        this.binding.searchBar.addTextChangedListener(searchBarTextWatcher)
+        this.binding.trackHistoryTrackList.layoutManager = LinearLayoutManager(this)
+        this.binding.searchBar.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus && binding.searchBar.text.isEmpty()) {
                 showTracksHistory()
             } else {
@@ -147,7 +147,7 @@ class SearchActivity : AppCompatActivity() {
         }
 
         // Track list
-        binding.trackList.layoutManager = LinearLayoutManager(this)
+        this.binding.trackList.layoutManager = LinearLayoutManager(this)
 
         val callbackiTunesAPIService = object : Callback<iTunesResponse>{
             override fun onResponse(call: Call<iTunesResponse>, response: Response<iTunesResponse>) {
@@ -170,18 +170,18 @@ class SearchActivity : AppCompatActivity() {
             }
         }
 
-        binding.searchScreenStubUpdateButton.setOnClickListener { iTunesAPIService.instance.getSongsByTerm(binding.searchBar.text.toString(), "music")
+        this.binding.searchScreenStubUpdateButton.setOnClickListener { iTunesAPIService.instance.getSongsByTerm(binding.searchBar.text.toString(), "music")
             .enqueue(callbackiTunesAPIService)
         }
 
-        binding.clearTracksHistoryButton.setOnClickListener {
+        this.binding.clearTracksHistoryButton.setOnClickListener {
             hideTracksHistory()
             SharedPreferencesKeeper.clearTracksHistory()
         }
 
-        binding.searchBar.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE && binding.searchBar.text.isNotEmpty()) {
-                iTunesAPIService.instance.getSongsByTerm(binding.searchBar.text.toString(), "music")
+        this.binding.searchBar.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE && this.binding.searchBar.text.isNotEmpty()) {
+                iTunesAPIService.instance.getSongsByTerm(this.binding.searchBar.text.toString(), "music")
                     .enqueue(
                         callbackiTunesAPIService
                     )
