@@ -2,6 +2,8 @@ package com.example.playlistmaker
 
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -10,9 +12,14 @@ import androidx.core.view.updatePadding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.playlistmaker.databinding.ActivityAudioplayerBinding
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class AudioPlayerActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAudioplayerBinding
+
+    private val mainHandler = Handler(Looper.getMainLooper())
+    private lateinit var trackTimeThread: Thread
 
     // Create a companion object to control MediaPlayer states
     companion object {
@@ -29,10 +36,11 @@ class AudioPlayerActivity : AppCompatActivity() {
     private fun prepareAudioPlayer(track: Track) {
         this.mediaPlayer.setDataSource(track.previewUrl)
         this.mediaPlayer.prepareAsync()
-        this.binding.playButton.isClickable = true
+        this.binding.playButton.isEnabled = true
         this.binding.playButton.setOnClickListener { this.playbackControl() }
         this.mediaPlayer.setOnCompletionListener {
             this.binding.playButton.setImageResource(R.drawable.ic_play)
+            this.binding.playProgress.setText(R.string.DefaultPlayProgress_AudioPlayerScreen_PlaylistMaker)
             this.audioPlayerState = STATE_PREPARED
         }
         this.audioPlayerState = STATE_PREPARED
@@ -42,6 +50,17 @@ class AudioPlayerActivity : AppCompatActivity() {
         this.binding.playButton.setImageResource(R.drawable.ic_pause)
         this.mediaPlayer.start()
         this.audioPlayerState = STATE_PLAYING
+        this.trackTimeThread = Thread {
+            while (this.audioPlayerState == STATE_PLAYING) {
+                Thread.sleep(250)
+                this.mainHandler.post {
+                    if (this.audioPlayerState == STATE_PLAYING) {
+                        this.binding.playProgress.text = SimpleDateFormat("mm:ss", Locale.getDefault()).format(mediaPlayer.currentPosition)
+                    }
+                }
+            }
+        }
+        this.trackTimeThread.start()
     }
 
     private fun pauseAudioPlayer() {
