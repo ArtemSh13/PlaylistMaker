@@ -97,12 +97,14 @@ class SearchActivity : AppCompatActivity() {
 
     private val mainHandler = Handler(Looper.getMainLooper())
     private val searchRunnable = Runnable {
+        binding.progressBar.visibility = View.VISIBLE
         iTunesAPIService.instance.getSongsByTerm(binding.searchBar.text.toString(), "music")
             .enqueue(object : Callback<iTunesResponse> {
                 override fun onResponse(
                     call: Call<iTunesResponse>,
                     response: Response<iTunesResponse>
                 ) {
+                    binding.progressBar.visibility = View.GONE
                     if (response.isSuccessful) {
                         if (response.body()!!.resultCount > 0) {
                             showTrackList()
@@ -120,6 +122,7 @@ class SearchActivity : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<iTunesResponse>, t: Throwable) {
+                    binding.progressBar.visibility = View.GONE
                     t.printStackTrace()
                     showConnectionProblemStub()
                 }
