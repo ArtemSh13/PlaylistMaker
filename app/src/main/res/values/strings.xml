@@ -24,6 +24,7 @@
     <string name="search_screen_search_history_title">Вы искали</string>
     <string name="search_screen_clear_search_history_button_label">Очистить историю</string>
 
+    <string name="DefaultPlayProgress.AudioPlayerScreen.PlaylistMaker">00:00</string>
     <string name="TrackTime.AudioPlayerScreen.PlaylistMaker">Длительность</string>
     <string name="CollectionName.AudioPlayerScreen.PlaylistMaker">Альбом</string>
     <string name="ReleaseDate.AudioPlayerScreen.PlaylistMaker">Год</string>

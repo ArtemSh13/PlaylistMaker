@@ -34,7 +34,8 @@ class TrackDeserializer : JsonDeserializer<Track> {
             },
             releaseDate = jsonObject.get("releaseDate").asString.subSequence(0, 4).toString(),
             primaryGenreName = jsonObject.get("primaryGenreName").asString,
-            country = jsonObject.get("country").asString
+            country = jsonObject.get("country").asString,
+            previewUrl = jsonObject.get("previewUrl").asString
         )
     }
 }

@@ -12,7 +12,8 @@ object TracksMock {
                 "Collection 1",
                 "2000-01-01",
                 "Genre 1",
-                "Country 1"
+                "Country 1",
+                "previewUrl"
             )
         )
         mockTrackList.add(
@@ -24,7 +25,8 @@ object TracksMock {
                 "Collection 2",
                 "2000-01-02",
                 "Genre 2",
-                "Country 2"
+                "Country 2",
+                "previewUrl"
             )
         )
         mockTrackList.add(
@@ -36,7 +38,8 @@ object TracksMock {
                 "Collection 3",
                 "2000-01-03",
                 "Genre 3",
-                "Country 3"
+                "Country 3",
+                "previewUrl"
             )
         )
         mockTrackList.add(
@@ -48,7 +51,8 @@ object TracksMock {
                 "Collection 4",
                 "2000-01-04",
                 "Genre 4",
-                "Country 4"
+                "Country 4",
+                "previewUrl"
             )
         )
         mockTrackList.add(
@@ -60,7 +64,8 @@ object TracksMock {
                 "Collection 5",
                 "2000-01-05",
                 "Genre 5",
-                "Country 5"
+                "Country 5",
+                "previewUrl"
             )
         )
     }
