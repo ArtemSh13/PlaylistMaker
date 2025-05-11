@@ -5,7 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 
-object iTunesAPIService {
+object ITunesApiService {
     val gson = GsonBuilder()
         .registerTypeAdapter(Track::class.java, TrackDeserializer())
         .create()
@@ -13,5 +13,5 @@ object iTunesAPIService {
     val instance = Retrofit.Builder()
     .baseUrl("https://itunes.apple.com/")
     .addConverterFactory(GsonConverterFactory.create(gson))
-    .build().create<iTunesAPI>()
+    .build().create<ITunesApi>()
 }

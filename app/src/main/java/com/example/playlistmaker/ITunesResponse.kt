@@ -1,6 +1,6 @@
 package com.example.playlistmaker
 
-class iTunesResponse(
+class ITunesResponse(
     val resultCount: Int,
     val results: ArrayList<Track>
 ) {
