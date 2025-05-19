@@ -1,9 +1,8 @@
-package com.example.playlistmaker.data.network
+package com.example.playlistmaker.data.dto
 
 import com.example.playlistmaker.domain.entities.Track
 
-class ITunesResponse(
+class TracksSearchResponse(
     val resultCount: Int,
     val results: ArrayList<Track>
-) {
-}
+) : Response()

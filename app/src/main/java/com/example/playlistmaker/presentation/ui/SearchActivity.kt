@@ -18,7 +18,7 @@ import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.playlistmaker.data.network.ITunesApiService
-import com.example.playlistmaker.data.network.ITunesResponse
+import com.example.playlistmaker.data.dto.TracksSearchResponse
 import com.example.playlistmaker.R
 import com.example.playlistmaker.data.repositories.SharedPreferencesKeeper
 import com.example.playlistmaker.domain.entities.Track
@@ -104,10 +104,10 @@ class SearchActivity : AppCompatActivity() {
     private val searchRunnable = Runnable {
         binding.progressBar.visibility = View.VISIBLE
         ITunesApiService.instance.getSongsByTerm(binding.searchBar.text.toString(), "music")
-            .enqueue(object : Callback<ITunesResponse> {
+            .enqueue(object : Callback<TracksSearchResponse> {
                 override fun onResponse(
-                    call: Call<ITunesResponse>,
-                    response: Response<ITunesResponse>
+                    call: Call<TracksSearchResponse>,
+                    response: Response<TracksSearchResponse>
                 ) {
                     binding.progressBar.visibility = View.GONE
                     if (response.isSuccessful) {
@@ -126,7 +126,7 @@ class SearchActivity : AppCompatActivity() {
                     }
                 }
 
-                override fun onFailure(call: Call<ITunesResponse>, t: Throwable) {
+                override fun onFailure(call: Call<TracksSearchResponse>, t: Throwable) {
                     binding.progressBar.visibility = View.GONE
                     t.printStackTrace()
                     showConnectionProblemStub()
