@@ -1,5 +1,7 @@
 package com.example.playlistmaker
 
+import com.example.playlistmaker.domain.entities.Track
+
 object TracksMock {
     val mockTrackList = ArrayList<Track>()
     init {

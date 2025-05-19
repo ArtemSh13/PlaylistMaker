@@ -1,5 +1,7 @@
-package com.example.playlistmaker
+package com.example.playlistmaker.data.network
 
+import com.example.playlistmaker.domain.entities.Track
+import com.example.playlistmaker.presentation.ui.TrackDeserializer
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

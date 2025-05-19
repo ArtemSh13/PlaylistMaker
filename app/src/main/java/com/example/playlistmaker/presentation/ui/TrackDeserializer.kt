@@ -1,5 +1,6 @@
-package com.example.playlistmaker
+package com.example.playlistmaker.presentation.ui
 
+import com.example.playlistmaker.domain.entities.Track
 import com.google.gson.*
 import java.lang.reflect.Type
 
