@@ -17,12 +17,14 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.playlistmaker.Creator
 import com.example.playlistmaker.data.network.ITunesApiService
 import com.example.playlistmaker.data.dto.TracksSearchResponse
 import com.example.playlistmaker.R
 import com.example.playlistmaker.data.repositories.SharedPreferencesKeeper
 import com.example.playlistmaker.domain.entities.Track
 import com.example.playlistmaker.databinding.ActivitySearchBinding
+import com.example.playlistmaker.domain.api.TracksInteractor
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -102,36 +104,32 @@ class SearchActivity : AppCompatActivity() {
 
     private val mainHandler = Handler(Looper.getMainLooper())
     private val searchRunnable = Runnable {
-        binding.progressBar.visibility = View.VISIBLE
-        ITunesApiService.instance.getSongsByTerm(binding.searchBar.text.toString(), "music")
-            .enqueue(object : Callback<TracksSearchResponse> {
-                override fun onResponse(
-                    call: Call<TracksSearchResponse>,
-                    response: Response<TracksSearchResponse>
-                ) {
-                    binding.progressBar.visibility = View.GONE
-                    if (response.isSuccessful) {
-                        if (response.body()!!.resultCount > 0) {
-                            showTrackList()
-                            val responseTracks = response.body()?.results.orEmpty()
-                            binding.trackList.adapter = TrackAdapter(
-                                tracks = responseTracks,
-                                onTrackClick = onTrackClickCallback
-                            )
+        try {
+            binding.progressBar.visibility = View.VISIBLE
+            Creator.provideTracksInteractor().searchTracks(
+                term = binding.searchBar.text.toString(),
+                consumer = object : TracksInteractor.TracksConsumer {
+                    override fun consume(foundTracks: List<Track>) {
+                        if (foundTracks.isEmpty()) {
+                            mainHandler.post {
+                                binding.progressBar.visibility = View.GONE
+                                showNothingFoundStub()
+                            }
                         } else {
-                            showNothingFoundStub()
+                            mainHandler.post {
+                                binding.progressBar.visibility = View.GONE
+                                binding.trackList.adapter = TrackAdapter(
+                                    tracks = foundTracks,
+                                    onTrackClick = onTrackClickCallback
+                                )
+                            }
                         }
-                    } else {
-                        showConnectionProblemStub()
                     }
                 }
-
-                override fun onFailure(call: Call<TracksSearchResponse>, t: Throwable) {
-                    binding.progressBar.visibility = View.GONE
-                    t.printStackTrace()
-                    showConnectionProblemStub()
-                }
-            })
+            )
+        } catch (e: IllegalStateException) {
+            showConnectionProblemStub()
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
