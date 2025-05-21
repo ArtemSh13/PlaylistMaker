@@ -29,7 +29,7 @@ class TrackDeserializer : JsonDeserializer<Track> {
             trackTime = this.formatMillis(jsonObject.get("trackTimeMillis").asInt),
             artworkUrl100 = jsonObject.get("artworkUrl100").asString,
             collectionName = if (jsonObject.get("collectionName")?.asString.isNullOrEmpty()) {
-                "-"
+                ""
             } else {
                 jsonObject.get("collectionName").asString
             },
