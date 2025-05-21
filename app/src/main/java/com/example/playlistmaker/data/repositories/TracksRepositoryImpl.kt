@@ -12,7 +12,19 @@ class TracksRepositoryImpl(private val networkClient: NetworkClient) : TracksRep
         check(response.resultCode == 200)
         val tracksSearchResponse = response as TracksSearchResponse
         return if (tracksSearchResponse.resultCount != 0) {
-            tracksSearchResponse.results
+            tracksSearchResponse.results.map {
+                Track(
+                    trackName = it.trackName,
+                    artistName = it.artistName,
+                    trackTime = it.getFormattedTrackTime(),
+                    artworkUrl100 = it.artworkUrl100,
+                    collectionName = it.getFormattedCollectionName(),
+                    releaseDate = it.getFormattedReleaseDate(),
+                    primaryGenreName = it.primaryGenreName,
+                    country = it.country,
+                    previewUrl = it.previewUrl
+                )
+            }
         } else {
             emptyList()
         }
