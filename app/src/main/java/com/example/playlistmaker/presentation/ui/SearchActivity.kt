@@ -103,10 +103,11 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private val mainHandler = Handler(Looper.getMainLooper())
+    private val tracksInteractor = Creator.provideTracksInteractor()
     private val searchRunnable = Runnable {
         try {
             binding.progressBar.visibility = View.VISIBLE
-            Creator.provideTracksInteractor().searchTracks(
+            tracksInteractor.searchTracks(
                 term = binding.searchBar.text.toString(),
                 consumer = object : TracksInteractor.TracksConsumer {
                     override fun consume(foundTracks: List<Track>) {
