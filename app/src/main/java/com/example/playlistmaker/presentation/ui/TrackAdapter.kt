@@ -1,8 +1,11 @@
-package com.example.playlistmaker
+package com.example.playlistmaker.presentation.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.playlistmaker.R
+import com.example.playlistmaker.data.repositories.SharedPreferencesKeeper
+import com.example.playlistmaker.domain.entities.Track
 
 class TrackAdapter(private val tracks: List<Track>,
                    private val onTrackClick: (Track) -> Unit

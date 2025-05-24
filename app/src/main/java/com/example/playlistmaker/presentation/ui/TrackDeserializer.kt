@@ -1,5 +1,6 @@
-package com.example.playlistmaker
+package com.example.playlistmaker.presentation.ui
 
+import com.example.playlistmaker.domain.entities.Track
 import com.google.gson.*
 import java.lang.reflect.Type
 
@@ -28,7 +29,7 @@ class TrackDeserializer : JsonDeserializer<Track> {
             trackTime = this.formatMillis(jsonObject.get("trackTimeMillis").asInt),
             artworkUrl100 = jsonObject.get("artworkUrl100").asString,
             collectionName = if (jsonObject.get("collectionName")?.asString.isNullOrEmpty()) {
-                "-"
+                ""
             } else {
                 jsonObject.get("collectionName").asString
             },
