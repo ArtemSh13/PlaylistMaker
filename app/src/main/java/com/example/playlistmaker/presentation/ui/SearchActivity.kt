@@ -103,7 +103,7 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private val mainHandler = Handler(Looper.getMainLooper())
-    private val tracksInteractor = Creator.provideTracksInteractor()
+    private val tracksInteractor = Creator.provideTracksInteractor(this)
     private val searchRunnable = Runnable {
         try {
             binding.progressBar.visibility = View.VISIBLE
