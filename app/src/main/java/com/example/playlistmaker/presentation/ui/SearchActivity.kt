@@ -100,20 +100,23 @@ class SearchActivity : AppCompatActivity() {
     private val mainHandler = Handler(Looper.getMainLooper())
     private val tracksInteractor = Creator.provideTracksInteractor(this)
     private val searchRunnable = Runnable {
-        try {
-            binding.progressBar.visibility = View.VISIBLE
-            tracksInteractor.searchTracks(
-                term = binding.searchBar.text.toString(),
-                consumer = object : TracksInteractor.TracksConsumer {
-                    override fun consume(foundTracks: List<Track>) {
-                        if (foundTracks.isEmpty()) {
-                            mainHandler.post {
-                                binding.progressBar.visibility = View.GONE
+        binding.progressBar.visibility = View.VISIBLE
+        tracksInteractor.searchTracks(
+            term = binding.searchBar.text.toString(),
+            consumer = object : TracksInteractor.TracksConsumer {
+                override fun consume(foundTracks: List<Track>?, errorMessage: String?) {
+                    mainHandler.post {
+                        binding.progressBar.visibility = View.GONE
+                        when (foundTracks) {
+                            null -> {
+                                showConnectionProblemStub()
+                            }
+
+                            emptyList<Track>() -> {
                                 showNothingFoundStub()
                             }
-                        } else {
-                            mainHandler.post {
-                                binding.progressBar.visibility = View.GONE
+
+                            else -> {
                                 binding.trackList.adapter = TrackAdapter(
                                     tracks = foundTracks,
                                     onTrackClick = onTrackClickCallback
@@ -122,10 +125,8 @@ class SearchActivity : AppCompatActivity() {
                         }
                     }
                 }
-            )
-        } catch (e: IllegalStateException) {
-            showConnectionProblemStub()
-        }
+            }
+        )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
