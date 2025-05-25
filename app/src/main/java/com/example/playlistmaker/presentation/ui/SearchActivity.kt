@@ -17,17 +17,12 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.playlistmaker.Creator
-import com.example.playlistmaker.data.network.ITunesApiService
-import com.example.playlistmaker.data.dto.TracksSearchResponse
+import com.example.playlistmaker.util.Creator
 import com.example.playlistmaker.R
 import com.example.playlistmaker.data.repositories.SharedPreferencesKeeper
 import com.example.playlistmaker.domain.entities.Track
 import com.example.playlistmaker.databinding.ActivitySearchBinding
 import com.example.playlistmaker.domain.api.TracksInteractor
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class SearchActivity : AppCompatActivity() {
