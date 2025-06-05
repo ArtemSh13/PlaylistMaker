@@ -1,6 +1,6 @@
 package com.example.playlistmaker.util
 
-import com.example.playlistmaker.domain.entities.Track
+import com.example.playlistmaker.search.domain.entities.Track
 
 object TracksMock {
     val mockTrackList = ArrayList<Track>()
