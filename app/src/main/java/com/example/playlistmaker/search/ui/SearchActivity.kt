@@ -25,8 +25,82 @@ import com.example.playlistmaker.databinding.ActivitySearchBinding
 import com.example.playlistmaker.player.ui.AudioPlayerActivity
 import com.example.playlistmaker.search.domain.api.TracksInteractor
 
+enum class SearchActivityState(val value: Map<String, Int>) {
+    DEFAULT(
+        mapOf(
+            "progressBar" to View.GONE,
+            "trackList" to View.GONE,
+            "trackHistory" to View.GONE,
+            "stub" to View.GONE,
+            "stubImage" to View.GONE,
+            "stubPrimaryText" to View.GONE,
+            "stubSecondaryText" to View.GONE,
+            "searchScreenStubUpdateButton" to View.GONE
+        )
+    ),
+    TRACK_HISTORY_SHOWING(
+        mapOf(
+            "progressBar" to View.GONE,
+            "trackList" to View.GONE,
+            "trackHistory" to View.VISIBLE,
+            "stub" to View.GONE,
+            "stubImage" to View.GONE,
+            "stubPrimaryText" to View.GONE,
+            "stubSecondaryText" to View.GONE,
+            "searchScreenStubUpdateButton" to View.GONE
+        )
+    ),
+    NOTHING_FOUND(
+        mapOf(
+            "progressBar" to View.GONE,
+            "trackList" to View.GONE,
+            "trackHistory" to View.GONE,
+            "stub" to View.VISIBLE,
+            "stubImage" to View.VISIBLE,
+            "stubPrimaryText" to View.VISIBLE,
+            "stubSecondaryText" to View.GONE,
+            "searchScreenStubUpdateButton" to View.GONE
+        )
+    ),
+    CONNECTION_PROBLEM(
+        mapOf(
+            "progressBar" to View.GONE,
+            "trackList" to View.GONE,
+            "trackHistory" to View.GONE,
+            "stub" to View.VISIBLE,
+            "stubImage" to View.VISIBLE,
+            "stubPrimaryText" to View.VISIBLE,
+            "stubSecondaryText" to View.VISIBLE,
+            "searchScreenStubUpdateButton" to View.VISIBLE
+        )
+    ),
+    LOADING(
+        mapOf(
+            "progressBar" to View.VISIBLE,
+            "trackList" to View.GONE,
+            "trackHistory" to View.GONE,
+            "stub" to View.GONE,
+            "stubImage" to View.GONE,
+            "stubPrimaryText" to View.GONE,
+            "stubSecondaryText" to View.GONE,
+            "searchScreenStubUpdateButton" to View.GONE
+        )
+    ),
+    TRACK_LIST_SHOWING(
+        mapOf(
+            "progressBar" to View.GONE,
+            "trackList" to View.VISIBLE,
+            "trackHistory" to View.GONE,
+            "stub" to View.GONE,
+            "stubImage" to View.GONE,
+            "stubPrimaryText" to View.GONE,
+            "stubSecondaryText" to View.GONE,
+            "searchScreenStubUpdateButton" to View.GONE
+        )
+    )
+}
 
-class SearchActivity : AppCompatActivity(), TracksView {
+class SearchActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySearchBinding
 
     companion object {
@@ -47,55 +121,22 @@ class SearchActivity : AppCompatActivity(), TracksView {
         )
     }
 
-    private fun showTrackList() {
-        this.binding.stub.visibility = View.GONE
-        this.binding.searchScreenStubUpdateButton.visibility = View.GONE
-
-        this.binding.trackList.visibility = View.VISIBLE
-    }
-
     private fun clearTrackList() {
         this.binding.trackList.adapter = TrackAdapter(tracks = emptyList(), onTrackClick = { })
-    }
-
-    private fun showNothingFoundStub() {
-        this.binding.trackList.visibility = View.GONE
-        this.binding.searchScreenStubUpdateButton.visibility = View.GONE
-
-        this.binding.stubPrimaryText.setText(R.string.search_screen_stub_nothing_found_primary_text)
-        this.binding.stubSecondaryText.setText(R.string.search_screen_stub_nothing_found_secondary_text)
-        this.binding.stubImage.setImageResource(R.drawable.img_nothing_found)
-
-        this.binding.stub.visibility = View.VISIBLE
-    }
-
-    private fun showConnectionProblemStub() {
-        this.binding.trackList.visibility = View.GONE
-
-        this.binding.stubPrimaryText.setText(R.string.search_screen_stub_connection_problem_primary_text)
-        this.binding.stubSecondaryText.setText(R.string.search_screen_stub_connection_problem_secondary_text)
-        this.binding.stubImage.setImageResource(R.drawable.img_connection_problem)
-        this.binding.searchScreenStubUpdateButton.visibility = View.VISIBLE
-
-        this.binding.stub.visibility = View.VISIBLE
     }
 
     private fun showTracksHistory() {
         val tracksHistory = SharedPreferencesKeeper.getTracksHistory()
         if (tracksHistory.isNotEmpty()) {
-            this.binding.trackList.visibility = View.GONE
-            this.binding.stub.visibility = View.GONE
             this.binding.trackHistoryTrackList.adapter =
                 TrackAdapter(tracks = tracksHistory, onTrackClick = onTrackClickCallback)
-            this.binding.trackHistory.visibility = View.VISIBLE
+            this.setScreenState(SearchActivityState.TRACK_HISTORY_SHOWING)
         }
     }
 
     private fun hideTracksHistory() {
         this.clearTrackList()
-        this.binding.trackList.visibility = View.VISIBLE
-        this.binding.stub.visibility = View.GONE
-        this.binding.trackHistory.visibility = View.GONE
+        this.setScreenState(SearchActivityState.TRACK_LIST_SHOWING)
     }
 
     private val mainHandler = Handler(Looper.getMainLooper())
@@ -124,7 +165,7 @@ class SearchActivity : AppCompatActivity(), TracksView {
             val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(this.binding.root.windowToken, 0)
             this.clearTrackList()
-            this.showTrackList()
+            this.setScreenState(SearchActivityState.TRACK_LIST_SHOWING)
         }
 
         val searchBarTextWatcher = object : TextWatcher {
@@ -136,7 +177,7 @@ class SearchActivity : AppCompatActivity(), TracksView {
                 binding.clearSearchBarButton.isVisible = !s.isNullOrEmpty()
                 if (s.isNullOrEmpty()) {
                     clearTrackList()
-                    showTrackList()
+                    this@SearchActivity.setScreenState(SearchActivityState.TRACK_LIST_SHOWING)
                 }
                 mainHandler.removeCallbacks(searchRunnable)
             }
@@ -165,7 +206,7 @@ class SearchActivity : AppCompatActivity(), TracksView {
         this.binding.trackList.layoutManager = LinearLayoutManager(this)
 
         this.binding.searchScreenStubUpdateButton.setOnClickListener {
-            this.searchRunnable
+            this.mainHandler.post(this.searchRunnable)
         }
 
         this.binding.clearTracksHistoryButton.setOnClickListener {
@@ -175,7 +216,7 @@ class SearchActivity : AppCompatActivity(), TracksView {
 
         this.binding.searchBar.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE && this.binding.searchBar.text.isNotEmpty()) {
-                this.searchRunnable
+                this.mainHandler.post(this.searchRunnable)
             }
             false
         }
@@ -195,20 +236,19 @@ class SearchActivity : AppCompatActivity(), TracksView {
     }
 
     private fun searchTracks() {
-        binding.progressBar.visibility = View.VISIBLE
+        this.setScreenState(SearchActivityState.LOADING)
         tracksInteractor.searchTracks(
             term = binding.searchBar.text.toString(),
             consumer = object : TracksInteractor.TracksConsumer {
                 override fun consume(foundTracks: List<Track>?, errorMessage: String?) {
                     mainHandler.post {
-                        binding.progressBar.visibility = View.GONE
                         when (foundTracks) {
                             null -> {
-                                showConnectionProblemStub()
+                                this@SearchActivity.setScreenState(SearchActivityState.CONNECTION_PROBLEM)
                             }
 
                             emptyList<Track>() -> {
-                                showNothingFoundStub()
+                                this@SearchActivity.setScreenState(SearchActivityState.NOTHING_FOUND)
                             }
 
                             else -> {
@@ -216,11 +256,51 @@ class SearchActivity : AppCompatActivity(), TracksView {
                                     tracks = foundTracks,
                                     onTrackClick = onTrackClickCallback
                                 )
+                                this@SearchActivity.setScreenState(SearchActivityState.TRACK_LIST_SHOWING)
                             }
                         }
                     }
                 }
             }
         )
+    }
+
+    private fun setScreenState(state: SearchActivityState) {
+        when (state) {
+            SearchActivityState.DEFAULT -> {}
+            SearchActivityState.TRACK_HISTORY_SHOWING -> {}
+            SearchActivityState.NOTHING_FOUND -> {
+                this.setContentForNothingFoundState()
+            }
+
+            SearchActivityState.CONNECTION_PROBLEM -> {
+                this.setContentForConnectionProblemState()
+            }
+
+            SearchActivityState.LOADING -> {}
+            SearchActivityState.TRACK_LIST_SHOWING -> {}
+        }
+
+        this.binding.progressBar.visibility = state.value["progressBar"] ?: View.GONE
+        this.binding.trackList.visibility = state.value["trackList"] ?: View.GONE
+        this.binding.trackHistory.visibility = state.value["trackHistory"] ?: View.GONE
+        this.binding.stub.visibility = state.value["stub"] ?: View.GONE
+        this.binding.stubImage.visibility = state.value["stubImage"] ?: View.GONE
+        this.binding.stubPrimaryText.visibility = state.value["stubPrimaryText"] ?: View.GONE
+        this.binding.stubSecondaryText.visibility = state.value["stubSecondaryText"] ?: View.GONE
+        this.binding.searchScreenStubUpdateButton.visibility =
+            state.value["searchScreenStubUpdateButton"] ?: View.GONE
+    }
+
+    private fun setContentForNothingFoundState() {
+        this.binding.stubPrimaryText.setText(R.string.search_screen_stub_nothing_found_primary_text)
+        this.binding.stubSecondaryText.setText(R.string.search_screen_stub_nothing_found_secondary_text)
+        this.binding.stubImage.setImageResource(R.drawable.img_nothing_found)
+    }
+
+    private fun setContentForConnectionProblemState() {
+        this.binding.stubPrimaryText.setText(R.string.search_screen_stub_connection_problem_primary_text)
+        this.binding.stubSecondaryText.setText(R.string.search_screen_stub_connection_problem_secondary_text)
+        this.binding.stubImage.setImageResource(R.drawable.img_connection_problem)
     }
 }
