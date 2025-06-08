@@ -26,7 +26,7 @@ import com.example.playlistmaker.player.ui.AudioPlayerActivity
 import com.example.playlistmaker.search.domain.api.TracksInteractor
 
 
-class SearchActivity : AppCompatActivity() {
+class SearchActivity : AppCompatActivity(), TracksView {
     private lateinit var binding: ActivitySearchBinding
 
     companion object {
@@ -100,35 +100,7 @@ class SearchActivity : AppCompatActivity() {
 
     private val mainHandler = Handler(Looper.getMainLooper())
     private val tracksInteractor = Creator.provideTracksInteractor(this)
-    private val searchRunnable = Runnable {
-        binding.progressBar.visibility = View.VISIBLE
-        tracksInteractor.searchTracks(
-            term = binding.searchBar.text.toString(),
-            consumer = object : TracksInteractor.TracksConsumer {
-                override fun consume(foundTracks: List<Track>?, errorMessage: String?) {
-                    mainHandler.post {
-                        binding.progressBar.visibility = View.GONE
-                        when (foundTracks) {
-                            null -> {
-                                showConnectionProblemStub()
-                            }
-
-                            emptyList<Track>() -> {
-                                showNothingFoundStub()
-                            }
-
-                            else -> {
-                                binding.trackList.adapter = TrackAdapter(
-                                    tracks = foundTracks,
-                                    onTrackClick = onTrackClickCallback
-                                )
-                            }
-                        }
-                    }
-                }
-            }
-        )
-    }
+    private val searchRunnable = Runnable { searchTracks() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -220,5 +192,35 @@ class SearchActivity : AppCompatActivity() {
         if (savedInstanceStateValue != null) {
             this.searchBarInputTextValue = savedInstanceStateValue
         }
+    }
+
+    private fun searchTracks() {
+        binding.progressBar.visibility = View.VISIBLE
+        tracksInteractor.searchTracks(
+            term = binding.searchBar.text.toString(),
+            consumer = object : TracksInteractor.TracksConsumer {
+                override fun consume(foundTracks: List<Track>?, errorMessage: String?) {
+                    mainHandler.post {
+                        binding.progressBar.visibility = View.GONE
+                        when (foundTracks) {
+                            null -> {
+                                showConnectionProblemStub()
+                            }
+
+                            emptyList<Track>() -> {
+                                showNothingFoundStub()
+                            }
+
+                            else -> {
+                                binding.trackList.adapter = TrackAdapter(
+                                    tracks = foundTracks,
+                                    onTrackClick = onTrackClickCallback
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        )
     }
 }
